@@ -295,17 +295,20 @@
 
     <script>
         	
-        let puntos = 0;
-        function darApoyo() {
-            puntos++;
-            document.getElementById('contador').innerText = puntos;
-            
-            const btn = document.getElementById('btnApoyo');
-            btn.style.borderColor = '#22c55e';
-            setTimeout(() => {
-                btn.style.borderColor = '#3b82f6';
-            }, 300);
-        }
+       let puntos = parseInt(localStorage.getItem('apoyosInvictus')) || 0;
+document.getElementById('contador').innerText = puntos;
+
+function darApoyo() {
+    puntos++;
+    document.getElementById('contador').innerText = puntos;
+    localStorage.setItem('apoyosInvictus', puntos);
+    
+    const btn = document.getElementById('btnApoyo');
+    btn.style.borderColor = '#22c55e';
+    setTimeout(() => {
+        btn.style.borderColor = '#3b82f6';
+    }, 300);
+}
 
         // --- LÓGICA DE LA CUENTA REGRESIVA ---
         // ¡AJUSTA AQUÍ LA FECHA DE TU PRÓXIMO PARTIDO!
