@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invictus FC</title>
     
-<link rel="icon" type="image/png" href="InvictusFC.png">
+    <link rel="icon" type="image/png" href="InvictusFC.png">
 
-<style>
-
+    <style>
         body {
             background-color: #0f172a;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -118,70 +117,59 @@
         }
 
         /* --- NUEVA SECCIÓN: PRÓXIMO PARTIDO Y CUENTA REGRESIVA --- */
-       proximo-partido {
-    background: rgba(15, 23, 42, 0.8);
-    border: 1px solid rgba(59, 130, 246, 0.4);
-    border-radius: 16px;
-    padding: 15px;
-    margin-bottom: 25px;
-    display: flex;
-    flex-direction: column; 
-    align-items: center;
-           
+        .proximo-partido {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(59, 130, 246, 0.4);
+            border-radius: 16px;
+            padding: 15px;
+            margin-bottom: 25px;
         }
 
-       .partido-titulo {
-    color: #38bdf8;
-    font-size: 11px;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    margin-bottom: 12px;
-           
+        .partido-titulo {
+            color: #38bdf8;
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
         }
 
-       .enfrentamiento {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 12px;
-    color: #ffffff;
-    font-weight: bold;
-    font-size: 14px;
-    margin-bottom: 15px;
-    width: 100%;
-           
+        /* MODIFICADO AQUÍ (CSS para alinear los escudos y nombres) */
+        .enfrentamiento {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            gap: 8px;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 12px;
         }
 
+        /* MODIFICADO AQUÍ (Nuevo estilo para agrupar escudo + nombre) */
         .equipo {
-         display: flex;
-         align-items: center;
-         gap: 6px;
-
-         }
-
-        .escudo-equipo {
-        width: 24px;
-        height: 24px;
-        max-width: 24px;
-        max-height: 24px;
-        object-fit: contain;
-        flex-shrink: 0;
-
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
-            
+
+        /* MODIFICADO AQUÍ (Nuevo estilo para controlar el tamaño de los escudos) */
+        .escudo-equipo {
+            width: 26px;
+            height: 26px;
+            object-fit: contain;
+        }
+
         .vs {
             color: #ef4444;
             font-size: 12px;
             font-style: italic;
-           
         }
 
         .cuenta-regresiva {
             display: flex;
             justify-content: space-between;
-            gap: 6px;
-            width: 100%;
+            gap: 5px;
         }
 
         .tiempo-box {
@@ -204,7 +192,6 @@
             font-size: 9px;
             text-transform: uppercase;
         }
-       
 
         /* Botones e Interactividad */
         .acciones {
@@ -232,25 +219,6 @@
             box-shadow: 0 6px 18px rgba(59, 130, 246, 0.5);
         }
 
-.boton-votar-mvp {
-    display: block;
-    background: linear-gradient(135deg, #f59e0b, #d97706);
-    color: white;
-    text-decoration: none;
-    padding: 12px 20px;
-    border-radius: 50px;
-    font-weight: bold;
-    font-size: 14px;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
-}
-
-.boton-votar-mvp:hover {
-    background: linear-gradient(135deg, #d97706, #b45309);
-    transform: scale(1.03);
-    box-shadow: 0 6px 18px rgba(245, 158, 11, 0.5);
-}
-    
         .boton-apoyo {
             background: transparent;
             color: #e2e8f0;
@@ -302,46 +270,44 @@
         </div>
 
         <div class="proximo-partido">
-    <div class="partido-titulo">⚡ Próximo Partido ⚡</div>
-    
-    <div class="enfrentamiento">
-        <div class="equipo">
-            <img class="escudo-equipo" src="InvictusFC.png" alt="Invictus FC">
-            <span>INVICTUS FC</span>
-        </div>
+            <div class="partido-titulo">⚡ Próximo Partido ⚡</div>
+            
+            <div class="enfrentamiento">
+                <div class="equipo">
+                    <img class="escudo-equipo" src="C:\Users\DELL\Documents\Nueva carpeta\InvictusFC.png" alt="Invictus FC">
+                    <span>Invictus FC</span>
+                </div>
 
-        <span class="vs">VS</span>
+                <span class="vs">VS</span>
 
-        <div class="equipo">
-            <span>GALLOS FC</span>
-            <img class="escudo-equipo" src="GallosFC.png" alt="Gallos FC">
-        </div>
-    </div>
+                <div class="equipo">
+                    <span>Rival FC</span>
+                    <img class="escudo-equipo" src="RivalFC.png" alt="Rival FC">
+                </div>
+            </div>
 
-    <div class="cuenta-regresiva">
-        <div class="tiempo-box">
-            <span class="tiempo-num" id="dias">00</span>
-            <span class="tiempo-tag">Días</span>
+            <div class="cuenta-regresiva">
+                <div class="tiempo-box">
+                    <span class="tiempo-num" id="dias">00</span>
+                    <span class="tiempo-tag">Días</span>
+                </div>
+                <div class="tiempo-box">
+                    <span class="tiempo-num" id="horas">00</span>
+                    <span class="tiempo-tag">Horas</span>
+                </div>
+                <div class="tiempo-box">
+                    <span class="tiempo-num" id="minutos">00</span>
+                    <span class="tiempo-tag">Min</span>
+                </div>
+                <div class="tiempo-box">
+                    <span class="tiempo-num" id="segundos">00</span>
+                    <span class="tiempo-tag">Seg</span>
+                </div>
+            </div>
         </div>
-        <div class="tiempo-box">
-            <span class="tiempo-num" id="horas">00</span>
-            <span class="tiempo-tag">Horas</span>
-        </div>
-        <div class="tiempo-box">
-            <span class="tiempo-num" id="minutos">00</span>
-            <span class="tiempo-tag">Min</span>
-        </div>
-        <div class="tiempo-box">
-            <span class="tiempo-num" id="segundos">00</span>
-            <span class="tiempo-tag">Seg</span>
-        </div>
-    </div>
-</div>
 
         <div class="acciones">
-            
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdO_Vt-FyWbJdxUJZt7axbSkUrxyKg748epWhCwpc6GiP4WxQ/viewform?usp=header" target="_blank" class="boton-votar-mvp">🏆 Votar MVP del Partido</a>
-            
+             <a href="https://docs.google.com/forms/d/e/1FAIpQLSdO_Vt-FyWbJdxUJZt7axbSkUrxyKg748epWhCwpc6GiP4WxQ/viewform?usp=header" target="_blank" class="boton-votar-mvp">🏆 Votar MVP del Partido</a>
             <a href="https://www.copafacil.com/es" target="_blank" class="boton-contacto">⚽ Ver Partidos</a>
             
             <button class="boton-apoyo" id="btnApoyo" onclick="darApoyo()">
@@ -352,26 +318,20 @@
     </div>
 
     <script>
-        	
-       let puntos = parseInt(localStorage.getItem('apoyosInvictus')) || 0;
-document.getElementById('contador').innerText = puntos;
-
-function darApoyo() {
-    puntos++;
-    document.getElementById('contador').innerText = puntos;
-    localStorage.setItem('apoyosInvictus', puntos);
-    
-    const btn = document.getElementById('btnApoyo');
-    btn.style.borderColor = '#22c55e';
-    setTimeout(() => {
-        btn.style.borderColor = '#3b82f6';
-    }, 300);
-}
+        let puntos = 0;
+        function darApoyo() {
+            puntos++;
+            document.getElementById('contador').innerText = puntos;
+            
+            const btn = document.getElementById('btnApoyo');
+            btn.style.borderColor = '#22c55e';
+            setTimeout(() => {
+                btn.style.borderColor = '#3b82f6';
+            }, 300);
+        }
 
         // --- LÓGICA DE LA CUENTA REGRESIVA ---
-        // ¡AJUSTA AQUÍ LA FECHA DE TU PRÓXIMO PARTIDO!
-        // Formato: "Año-Mes-DíaTHora:Minutos:Segundos"
-        const fechaPartido = new Date("2026-08-10T19:30:00").getTime();
+        const fechaPartido = new Date("2026-08-09T18:00:00").getTime();
 
         const contador = setInterval(function() {
             const ahora = new Date().getTime();
