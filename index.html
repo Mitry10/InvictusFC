@@ -137,15 +137,29 @@
 
         .enfrentamiento {
             display: flex;
-            justify-content: center;
+            justify-content: space-around;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             color: #ffffff;
             font-weight: bold;
-            font-size: 16px;
+            font-size: 14px;
             margin-bottom: 12px;
         }
 
+        .equipo {
+         display: flex;
+         align-items: center;
+         gap: 6px
+
+         }
+
+        .escudo-equipo {
+        width: 26px
+        height 26px
+        object-fit: contain;
+
+        }
+            
         .vs {
             color: #ef4444;
             font-size: 12px;
@@ -278,10 +292,17 @@
         <div class="proximo-partido">
             <div class="partido-titulo">⚡ Próximo Partido ⚡</div>
             <div class="enfrentamiento">
-                <span>INVICTUS FC</span>
-                <span class="vs">VS</span>
-                <span>GALLOS FC</span>
-            </div>
+    <div class="equipo">
+        <img class="escudo-equipo" src="InvictusFC.png" alt="Invictus FC">
+        <span>INVICTUS FC</span>
+    </div>
+
+    <span class="vs">VS</span>
+
+    <div class="equipo">
+        <span>GALLOS FC</span>
+        <img class="escudo-equipo" src="GallosFC.png" alt="Gallos FC">
+    </div>
             <div class="cuenta-regresiva">
                 <div class="tiempo-box">
                     <span class="tiempo-num" id="dias">00</span>
