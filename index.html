@@ -2,42 +2,61 @@
 <html lang="es">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Invictus FC</title>
 
     <link rel="icon" type="image/png" href="InvictusFC.png">
 
+
     <style>
 
-        /* =========================
+        /* =========================================
            CONFIGURACIÓN GENERAL
-           ========================= */
+           ========================================= */
 
         body {
+
             background-color: #0f172a;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+            font-family:
+                'Segoe UI',
+                Tahoma,
+                Geneva,
+                Verdana,
+                sans-serif;
 
             display: flex;
+
             justify-content: center;
+
             align-items: center;
 
             min-height: 100vh;
 
             margin: 0;
+
             padding: 20px;
 
             box-sizing: border-box;
         }
 
 
-        /* =========================
+        /* =========================================
            TARJETA PRINCIPAL
-           ========================= */
+           ========================================= */
 
         .tarjeta {
-            background: linear-gradient(145deg, #0f1b33, #000055);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #0f1b33,
+                    #000055
+                );
 
             width: 380px;
 
@@ -48,10 +67,16 @@
             text-align: center;
 
             box-shadow:
-                0px 15px 35px rgba(0, 0, 0, 0.6),
-                0px 0px 15px rgba(59, 130, 246, 0.2);
 
-            border: 1px solid rgba(59, 130, 246, 0.3);
+                0px 15px 35px
+                rgba(0, 0, 0, 0.6),
+
+                0px 0px 15px
+                rgba(59, 130, 246, 0.2);
+
+            border:
+                1px solid
+                rgba(59, 130, 246, 0.3);
 
             transition:
                 transform 0.4s ease,
@@ -60,20 +85,28 @@
 
 
         .tarjeta:hover {
-            transform: translateY(-8px);
+
+            transform:
+                translateY(-8px);
 
             box-shadow:
-                0px 20px 40px rgba(0, 0, 0, 0.8),
-                0px 0px 25px rgba(59, 130, 246, 0.4);
+
+                0px 20px 40px
+                rgba(0, 0, 0, 0.8),
+
+                0px 0px 25px
+                rgba(59, 130, 246, 0.4);
         }
 
 
-        /* =========================
+        /* =========================================
            ESCUDO
-           ========================= */
+           ========================================= */
 
         .avatar {
+
             width: 120px;
+
             height: 120px;
 
             background-color: #000000;
@@ -86,9 +119,11 @@
 
             display: block;
 
-            margin: 10px auto 20px auto;
+            margin:
+                10px auto 20px auto;
 
-            border: 2px solid #3b82f6;
+            border:
+                2px solid #3b82f6;
 
             filter:
                 drop-shadow(
@@ -96,21 +131,27 @@
                     rgba(59, 130, 246, 0.5)
                 );
 
-            transition: transform 0.4s ease;
+            transition:
+                transform 0.4s ease;
         }
 
 
         .avatar:hover {
-            transform: scale(1.1) rotate(5deg);
+
+            transform:
+                scale(1.1)
+                rotate(5deg);
         }
 
 
-        /* =========================
+        /* =========================================
            TÍTULO
-           ========================= */
+           ========================================= */
 
         h2 {
-            margin: 0 0 8px 0;
+
+            margin:
+                0 0 8px 0;
 
             color: #ffffff;
 
@@ -122,11 +163,12 @@
         }
 
 
-        /* =========================
+        /* =========================================
            POSICIÓN
-           ========================= */
+           ========================================= */
 
         .posicion {
+
             color: #60a5fa;
 
             font-size: 12px;
@@ -144,7 +186,8 @@
             background-color:
                 rgba(59, 130, 246, 0.15);
 
-            padding: 6px 14px;
+            padding:
+                6px 14px;
 
             border-radius: 20px;
 
@@ -154,11 +197,12 @@
         }
 
 
-        /* =========================
+        /* =========================================
            DESCRIPCIÓN
-           ========================= */
+           ========================================= */
 
         .descripcion {
+
             color: #cbd5e1;
 
             font-size: 14px;
@@ -171,14 +215,16 @@
         }
 
 
-        /* =========================
+        /* =========================================
            ESTADÍSTICAS
-           ========================= */
+           ========================================= */
 
         .stats-container {
+
             display: flex;
 
-            justify-content: space-around;
+            justify-content:
+                space-around;
 
             background-color:
                 rgba(15, 23, 42, 0.6);
@@ -196,13 +242,16 @@
 
 
         .stat-item {
+
             display: flex;
 
-            flex-direction: column;
+            flex-direction:
+                column;
         }
 
 
         .stat-valor {
+
             color: #38bdf8;
 
             font-weight: bold;
@@ -212,6 +261,7 @@
 
 
         .stat-label {
+
             color: #94a3b8;
 
             font-size: 11px;
@@ -220,15 +270,16 @@
         }
 
 
-        /* ==================================================
+        /* =========================================
            MVP DEL PARTIDO
-           ================================================== */
+           ========================================= */
 
         .mvp-card {
 
             position: relative;
 
-            margin: 25px 0;
+            margin:
+                25px 0;
 
             padding: 8px;
 
@@ -247,14 +298,18 @@
                 rgba(59, 130, 246, 0.5);
 
             box-shadow:
-                0 10px 30px rgba(0, 0, 0, 0.7),
-                0 0 25px rgba(37, 99, 235, 0.25);
+
+                0 10px 30px
+                rgba(0, 0, 0, 0.7),
+
+                0 0 25px
+                rgba(37, 99, 235, 0.25);
 
             overflow: hidden;
         }
 
 
-        /* Brillo diagonal */
+        /* Efecto de brillo */
 
         .mvp-card::before {
 
@@ -275,8 +330,6 @@
             pointer-events: none;
         }
 
-
-        /* TÍTULO MVP */
 
         .mvp-titulo {
 
@@ -302,11 +355,12 @@
 
 
         .mvp-titulo span {
+
             color: #38bdf8;
         }
 
 
-        /* IMAGEN DEL MVP */
+        /* Imagen del MVP */
 
         .mvp-imagen {
 
@@ -334,13 +388,15 @@
 
         .mvp-imagen:hover {
 
-            transform: scale(1.02);
+            transform:
+                scale(1.02);
 
-            filter: brightness(1.08);
+            filter:
+                brightness(1.08);
         }
 
 
-        /* LÍNEA AZUL */
+        /* Línea decorativa */
 
         .mvp-linea {
 
@@ -361,7 +417,7 @@
         }
 
 
-        /* NOMBRE DEL MVP */
+        /* Nombre */
 
         .mvp-nombre {
 
@@ -390,28 +446,42 @@
         }
 
 
-        /* =========================
-           PRÓXIMO PARTIDO
-           ========================= */
+        /* =========================================
+           MARCADOR FINAL
+           ========================================= */
 
-        .proximo-partido {
+        .marcador-final {
 
             background:
-                rgba(15, 23, 42, 0.8);
+                linear-gradient(
+                    145deg,
+                    #020617,
+                    #172554,
+                    #020617
+                );
 
             border:
                 1px solid
-                rgba(59, 130, 246, 0.4);
+                rgba(59, 130, 246, 0.5);
 
-            border-radius: 16px;
+            border-radius: 18px;
 
-            padding: 15px;
+            padding:
+                20px 12px;
 
             margin-bottom: 25px;
+
+            box-shadow:
+
+                0 10px 25px
+                rgba(0, 0, 0, 0.6),
+
+                0 0 20px
+                rgba(37, 99, 235, 0.2);
         }
 
 
-        .partido-titulo {
+        .final-titulo {
 
             color: #38bdf8;
 
@@ -421,122 +491,122 @@
 
             text-transform: uppercase;
 
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
 
-            margin-bottom: 8px;
+            margin-bottom: 15px;
         }
 
 
-        /* =========================
-           ENFRENTAMIENTO
-           ========================= */
-
-        .enfrentamiento {
+        .marcador-equipos {
 
             display: flex;
 
-            justify-content: space-around;
+            justify-content:
+                space-around;
 
             align-items: center;
 
-            gap: 8px;
+            gap: 10px;
+        }
 
-            color: #ffffff;
+
+        .equipo-final {
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            gap: 7px;
+
+            color: white;
 
             font-weight: bold;
 
-            font-size: 14px;
+            font-size: 13px;
 
-            margin-bottom: 12px;
+            width: 100px;
         }
 
 
-        .equipo {
+        .escudo-final {
 
-            display: flex;
+            width: 55px;
 
-            align-items: center;
-
-            gap: 6px;
-        }
-
-
-        .escudo-equipo {
-
-            width: 26px;
-
-            height: 26px;
+            height: 55px;
 
             object-fit: contain;
         }
 
 
-        .vs {
+        /* Resultado */
 
-            color: #ef4444;
-
-            font-size: 12px;
-
-            font-style: italic;
-        }
-
-
-        /* =========================
-           CUENTA REGRESIVA
-           ========================= */
-
-        .cuenta-regresiva {
+        .resultado {
 
             display: flex;
 
-            justify-content: space-between;
+            align-items: center;
 
-            gap: 5px;
+            gap: 8px;
         }
 
 
-        .tiempo-box {
+        .gol {
 
-            background-color:
-                rgba(0, 0, 0, 0.4);
+            color: white;
 
-            padding: 6px;
+            font-size: 38px;
 
-            border-radius: 8px;
+            font-weight: 900;
 
-            flex: 1;
+            line-height: 1;
 
-            border:
-                1px solid
-                rgba(255, 255, 255, 0.05);
+            text-shadow:
+                0 0 15px
+                rgba(59, 130, 246, 0.5);
         }
 
 
-        .tiempo-num {
-
-            display: block;
+        .guion {
 
             color: #60a5fa;
 
-            font-weight: bold;
+            font-size: 25px;
 
-            font-size: 16px;
+            font-weight: bold;
         }
 
 
-        .tiempo-tag {
+        /* Ganador */
+
+        .ganador {
+
+            color: #38bdf8;
+
+            text-shadow:
+                0 0 18px
+                rgba(56, 189, 248, 0.6);
+        }
+
+
+        .final-mensaje {
 
             color: #94a3b8;
 
-            font-size: 9px;
+            font-size: 10px;
+
+            margin-top: 15px;
 
             text-transform: uppercase;
+
+            letter-spacing: 1px;
         }
 
 
-        /* =========================
+        /* =========================================
            BOTONES
-           ========================= */
+           ========================================= */
 
         .acciones {
 
@@ -548,6 +618,8 @@
         }
 
 
+        /* Botón ver partidos */
+
         .boton-contacto {
 
             display: block;
@@ -558,7 +630,8 @@
 
             text-decoration: none;
 
-            padding: 12px 20px;
+            padding:
+                12px 20px;
 
             border-radius: 50px;
 
@@ -566,7 +639,8 @@
 
             font-size: 14px;
 
-            transition: all 0.3s ease;
+            transition:
+                all 0.3s ease;
 
             box-shadow:
                 0 4px 12px
@@ -578,7 +652,8 @@
 
             background-color: #2563eb;
 
-            transform: scale(1.03);
+            transform:
+                scale(1.03);
 
             box-shadow:
                 0 6px 18px
@@ -586,9 +661,9 @@
         }
 
 
-        /* =========================
+        /* =========================================
            BOTÓN VOTAR MVP
-           ========================= */
+           ========================================= */
 
         .boton-votar-mvp {
 
@@ -605,7 +680,8 @@
 
             text-decoration: none;
 
-            padding: 12px 20px;
+            padding:
+                12px 20px;
 
             border-radius: 50px;
 
@@ -613,7 +689,8 @@
 
             font-size: 14px;
 
-            transition: all 0.3s ease;
+            transition:
+                all 0.3s ease;
 
             box-shadow:
                 0 4px 12px
@@ -630,7 +707,8 @@
                     #b45309
                 );
 
-            transform: scale(1.03);
+            transform:
+                scale(1.03);
 
             box-shadow:
                 0 6px 18px
@@ -638,9 +716,9 @@
         }
 
 
-        /* =========================
+        /* =========================================
            BOTÓN APOYO
-           ========================= */
+           ========================================= */
 
         .boton-apoyo {
 
@@ -651,7 +729,8 @@
             border:
                 2px solid #3b82f6;
 
-            padding: 10px 20px;
+            padding:
+                10px 20px;
 
             border-radius: 50px;
 
@@ -661,7 +740,8 @@
 
             cursor: pointer;
 
-            transition: all 0.3s ease;
+            transition:
+                all 0.3s ease;
         }
 
 
@@ -676,19 +756,22 @@
 
         .boton-apoyo:active {
 
-            transform: scale(0.95);
+            transform:
+                scale(0.95);
         }
 
 
-        /* ==================================================
-           ADAPTACIÓN PARA CELULARES
-           ================================================== */
+        /* =========================================
+           CELULARES
+           ========================================= */
 
         @media (max-width: 500px) {
 
             body {
+
                 padding: 10px;
             }
+
 
             .tarjeta {
 
@@ -713,6 +796,28 @@
                 font-size: 13px;
             }
 
+
+            .gol {
+
+                font-size: 32px;
+            }
+
+
+            .equipo-final {
+
+                font-size: 11px;
+
+                width: 80px;
+            }
+
+
+            .escudo-final {
+
+                width: 48px;
+
+                height: 48px;
+            }
+
         }
 
     </style>
@@ -723,14 +828,14 @@
 <body>
 
 
-    <!-- ==================================================
+    <!-- =========================================
          TARJETA PRINCIPAL
-         ================================================== -->
+         ========================================= -->
 
     <div class="tarjeta">
 
 
-        <!-- ESCUDO -->
+        <!-- ESCUDO DE INVICTUS -->
 
         <img
             class="avatar"
@@ -739,7 +844,7 @@
         >
 
 
-        <!-- NOMBRE DEL EQUIPO -->
+        <!-- NOMBRE -->
 
         <h2>
             Invictus FC
@@ -764,9 +869,9 @@
         </p>
 
 
-        <!-- ==================================================
+        <!-- =========================================
              ESTADÍSTICAS
-             ================================================== -->
+             ========================================= -->
 
         <div class="stats-container">
 
@@ -813,9 +918,9 @@
         </div>
 
 
-        <!-- ==================================================
+        <!-- =========================================
              MVP DEL PARTIDO
-             ================================================== -->
+             ========================================= -->
 
         <div class="mvp-card">
 
@@ -833,12 +938,12 @@
 
             <img
                 class="mvp-imagen"
-                src="MVPChuyin.png"
+                src="MVP-Chuyin.png"
                 alt="Chuyin - MVP del Partido"
             >
 
 
-            <!-- LÍNEA DECORATIVA -->
+            <!-- LÍNEA -->
 
             <div class="mvp-linea"></div>
 
@@ -855,29 +960,31 @@
         </div>
 
 
-        <!-- ==================================================
-             PRÓXIMO PARTIDO
-             ================================================== -->
+        <!-- =========================================
+             MARCADOR FINAL
+             ========================================= -->
 
-        <div class="proximo-partido">
+        <div class="marcador-final">
 
 
-            <div class="partido-titulo">
+            <div class="final-titulo">
 
-                ⚡ Próximo Partido ⚡
+                🏁 Partido Finalizado
 
             </div>
 
 
-            <div class="enfrentamiento">
+            <div class="marcador-equipos">
 
 
-                <!-- INVICTUS -->
+                <!-- =================================
+                     INVICTUS FC
+                     ================================= -->
 
-                <div class="equipo">
+                <div class="equipo-final">
 
                     <img
-                        class="escudo-equipo"
+                        class="escudo-final"
                         src="InvictusFC.png"
                         alt="Invictus FC"
                     >
@@ -889,110 +996,62 @@
                 </div>
 
 
-                <!-- VS -->
+                <!-- =================================
+                     MARCADOR
+                     ================================= -->
 
-                <span class="vs">
-                    VS
-                </span>
+                <div class="resultado">
+
+                    <span class="gol">
+                        2
+                    </span>
+
+                    <span class="guion">
+                        -
+                    </span>
+
+                    <span class="gol ganador">
+                        7
+                    </span>
+
+                </div>
 
 
-                <!-- GALLOS -->
+                <!-- =================================
+                     GALLOS FC
+                     ================================= -->
 
-                <div class="equipo">
+                <div class="equipo-final">
+
+                    <img
+                        class="escudo-final"
+                        src="GallosFC.png"
+                        alt="Gallos FC"
+                    >
 
                     <span>
                         Gallos FC
                     </span>
 
-                    <img
-                        class="escudo-equipo"
-                        src="GallosFC.png"
-                        alt="Gallos FC"
-                    >
-
                 </div>
 
 
             </div>
 
 
-            <!-- CUENTA REGRESIVA -->
+            <div class="final-mensaje">
 
-            <div class="cuenta-regresiva">
-
-
-                <div class="tiempo-box">
-
-                    <span
-                        class="tiempo-num"
-                        id="dias"
-                    >
-                        00
-                    </span>
-
-                    <span class="tiempo-tag">
-                        Días
-                    </span>
-
-                </div>
-
-
-                <div class="tiempo-box">
-
-                    <span
-                        class="tiempo-num"
-                        id="horas"
-                    >
-                        00
-                    </span>
-
-                    <span class="tiempo-tag">
-                        Horas
-                    </span>
-
-                </div>
-
-
-                <div class="tiempo-box">
-
-                    <span
-                        class="tiempo-num"
-                        id="minutos"
-                    >
-                        00
-                    </span>
-
-                    <span class="tiempo-tag">
-                        Min
-                    </span>
-
-                </div>
-
-
-                <div class="tiempo-box">
-
-                    <span
-                        class="tiempo-num"
-                        id="segundos"
-                    >
-                        00
-                    </span>
-
-                    <span class="tiempo-tag">
-                        Seg
-                    </span>
-
-                </div>
-
+                Resultado Final
 
             </div>
+
 
         </div>
 
 
-        <!-- ==================================================
+        <!-- =========================================
              BOTONES
-             ================================================== -->
+             ========================================= -->
 
         <div class="acciones">
 
@@ -1048,23 +1107,25 @@
     </div>
 
 
-    <!-- ==================================================
+    <!-- =========================================
          JAVASCRIPT
-         ================================================== -->
+         ========================================= -->
 
     <script>
 
 
-        /* =========================
-           BOTÓN DE APOYO
-           ========================= */
+        /* =========================================
+           SISTEMA DE APOYO
+           ========================================= */
 
         let puntos = 0;
 
 
         function darApoyo() {
 
+
             puntos++;
+
 
             document.getElementById(
                 'contador'
@@ -1088,118 +1149,8 @@
 
             }, 300);
 
+
         }
-
-
-        /* =========================
-           CUENTA REGRESIVA
-           ========================= */
-
-        const fechaPartido =
-            new Date(
-                "2026-08-10T19:30:00"
-            ).getTime();
-
-
-        const contador =
-            setInterval(function() {
-
-
-                const ahora =
-                    new Date().getTime();
-
-
-                const diferencia =
-                    fechaPartido - ahora;
-
-
-                if (diferencia > 0) {
-
-
-                    const dias =
-                        Math.floor(
-                            diferencia /
-                            (1000 * 60 * 60 * 24)
-                        );
-
-
-                    const horas =
-                        Math.floor(
-                            (
-                                diferencia %
-                                (1000 * 60 * 60 * 24)
-                            ) /
-                            (1000 * 60 * 60)
-                        );
-
-
-                    const minutos =
-                        Math.floor(
-                            (
-                                diferencia %
-                                (1000 * 60 * 60)
-                            ) /
-                            (1000 * 60)
-                        );
-
-
-                    const segundos =
-                        Math.floor(
-                            (
-                                diferencia %
-                                (1000 * 60)
-                            ) /
-                            1000
-                        );
-
-
-                    document.getElementById(
-                        "dias"
-                    ).innerText =
-                        dias < 10
-                        ? '0' + dias
-                        : dias;
-
-
-                    document.getElementById(
-                        "horas"
-                    ).innerText =
-                        horas < 10
-                        ? '0' + horas
-                        : horas;
-
-
-                    document.getElementById(
-                        "minutos"
-                    ).innerText =
-                        minutos < 10
-                        ? '0' + minutos
-                        : minutos;
-
-
-                    document.getElementById(
-                        "segundos"
-                    ).innerText =
-                        segundos < 10
-                        ? '0' + segundos
-                        : segundos;
-
-
-                } else {
-
-
-                    clearInterval(contador);
-
-
-                    document.querySelector(
-                        ".cuenta-regresiva"
-                    ).innerHTML =
-                        "<b style='color:#22c55e;'>¡El partido está en juego o terminó!</b>";
-
-                }
-
-
-            }, 1000);
 
 
     </script>
