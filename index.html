@@ -3,824 +3,1420 @@
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Invictus FC</title>
+<title>Invictus FC | Sitio Oficial</title>
 
-    <link rel="icon" type="image/png" href="InvictusFC.png">
+<link rel="icon" type="image/png" href="InvictusFC.png">
 
+<style>
 
-    <style>
+/* =====================================================
+   VARIABLES
+===================================================== */
 
-        /* =========================================
-           CONFIGURACIÓN GENERAL
-           ========================================= */
+:root{
+    --azul:#2563eb;
+    --azul2:#38bdf8;
+    --azul3:#172554;
+    --fondo:#020617;
+    --card:#071127;
+    --card2:#0b1730;
+    --blanco:#fff;
+    --gris:#94a3b8;
+    --gris2:#cbd5e1;
+    --verde:#22c55e;
+    --oro:#f59e0b;
+}
 
-        body {
 
-            background-color: #0f172a;
+/* =====================================================
+   GENERAL
+===================================================== */
 
-            font-family:
-                'Segoe UI',
-                Tahoma,
-                Geneva,
-                Verdana,
-                sans-serif;
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
 
-            display: flex;
+html{
+    scroll-behavior:smooth;
+}
 
-            justify-content: center;
+body{
 
-            align-items: center;
+    background:
 
-            min-height: 100vh;
+    radial-gradient(
+        circle at 10% 10%,
+        rgba(37,99,235,.20),
+        transparent 30%
+    ),
 
-            margin: 0;
+    radial-gradient(
+        circle at 90% 80%,
+        rgba(56,189,248,.12),
+        transparent 30%
+    ),
 
-            padding: 20px;
+    var(--fondo);
 
-            box-sizing: border-box;
-        }
+    color:white;
 
+    font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
 
-        /* =========================================
-           TARJETA PRINCIPAL
-           ========================================= */
+    min-height:100vh;
 
-        .tarjeta {
+    overflow-x:hidden;
+}
 
-            background:
-                linear-gradient(
-                    145deg,
-                    #0f1b33,
-                    #000055
-                );
 
-            width: 380px;
+/* =====================================================
+   PARTÍCULAS
+===================================================== */
 
-            padding: 30px;
+.particulas{
 
-            border-radius: 24px;
+    position:fixed;
 
-            text-align: center;
+    inset:0;
 
-            box-shadow:
+    pointer-events:none;
 
-                0px 15px 35px
-                rgba(0, 0, 0, 0.6),
+    overflow:hidden;
 
-                0px 0px 15px
-                rgba(59, 130, 246, 0.2);
+    z-index:-1;
+}
 
-            border:
-                1px solid
-                rgba(59, 130, 246, 0.3);
+.particulas span{
 
-            transition:
-                transform 0.4s ease,
-                box-shadow 0.4s ease;
-        }
+    position:absolute;
 
+    width:3px;
+    height:3px;
 
-        .tarjeta:hover {
+    background:#38bdf8;
 
-            transform:
-                translateY(-8px);
+    border-radius:50%;
 
-            box-shadow:
+    opacity:.4;
 
-                0px 20px 40px
-                rgba(0, 0, 0, 0.8),
+    animation:
+    flotar 8s linear infinite;
+}
 
-                0px 0px 25px
-                rgba(59, 130, 246, 0.4);
-        }
+.particulas span:nth-child(1){
+    left:10%;
+    animation-delay:0s;
+}
 
+.particulas span:nth-child(2){
+    left:25%;
+    animation-delay:2s;
+}
 
-        /* =========================================
-           ESCUDO
-           ========================================= */
+.particulas span:nth-child(3){
+    left:45%;
+    animation-delay:4s;
+}
 
-        .avatar {
+.particulas span:nth-child(4){
+    left:65%;
+    animation-delay:1s;
+}
 
-            width: 120px;
+.particulas span:nth-child(5){
+    left:85%;
+    animation-delay:3s;
+}
 
-            height: 120px;
+@keyframes flotar{
 
-            background-color: #000000;
+    from{
+        transform:
+        translateY(110vh);
+        opacity:0;
+    }
 
-            border-radius: 50%;
+    20%{
+        opacity:.5;
+    }
 
-            object-fit: contain;
+    to{
+        transform:
+        translateY(-10vh);
+        opacity:0;
+    }
+}
 
-            padding: 10px;
 
-            display: block;
+/* =====================================================
+   NAVBAR
+===================================================== */
 
-            margin:
-                10px auto 20px auto;
+.navbar{
 
-            border:
-                2px solid #3b82f6;
+    position:sticky;
 
-            filter:
-                drop-shadow(
-                    0px 5px 15px
-                    rgba(59, 130, 246, 0.5)
-                );
+    top:0;
 
-            transition:
-                transform 0.4s ease;
-        }
+    z-index:100;
 
+    backdrop-filter:blur(15px);
 
-        .avatar:hover {
+    background:
+    rgba(2,6,23,.82);
 
-            transform:
-                scale(1.1)
-                rotate(5deg);
-        }
+    border-bottom:
+    1px solid
+    rgba(59,130,246,.18);
 
+    padding:12px 15px;
+}
 
-        /* =========================================
-           TÍTULO
-           ========================================= */
+.nav-inner{
 
-        h2 {
+    max-width:900px;
 
-            margin:
-                0 0 8px 0;
+    margin:auto;
 
-            color: #ffffff;
+    display:flex;
 
-            font-size: 28px;
+    align-items:center;
 
-            letter-spacing: 1px;
+    justify-content:space-between;
+}
 
-            text-transform: uppercase;
-        }
+.nav-logo{
 
+    display:flex;
 
-        /* =========================================
-           POSICIÓN
-           ========================================= */
+    align-items:center;
 
-        .posicion {
+    gap:8px;
 
-            color: #60a5fa;
+    font-weight:bold;
 
-            font-size: 12px;
+    letter-spacing:2px;
 
-            font-weight: bold;
+    font-size:13px;
+}
 
-            text-transform: uppercase;
+.nav-logo img{
 
-            letter-spacing: 2px;
+    width:35px;
+    height:35px;
 
-            margin-bottom: 20px;
+    object-fit:contain;
+}
 
-            display: inline-block;
+.nav-links{
 
-            background-color:
-                rgba(59, 130, 246, 0.15);
+    display:flex;
 
-            padding:
-                6px 14px;
+    gap:6px;
+}
 
-            border-radius: 20px;
+.nav-links button{
 
-            border:
-                1px solid
-                rgba(59, 130, 246, 0.3);
-        }
+    background:transparent;
 
+    border:none;
 
-        /* =========================================
-           DESCRIPCIÓN
-           ========================================= */
+    color:#94a3b8;
 
-        .descripcion {
+    padding:8px 10px;
 
-            color: #cbd5e1;
+    cursor:pointer;
 
-            font-size: 14px;
+    border-radius:8px;
 
-            line-height: 1.6;
+    font-size:11px;
 
-            margin-bottom: 25px;
+    transition:.3s;
+}
 
-            font-weight: 400;
-        }
+.nav-links button:hover{
 
+    background:
+    rgba(59,130,246,.15);
 
-        /* =========================================
-           ESTADÍSTICAS
-           ========================================= */
+    color:white;
+}
 
-        .stats-container {
 
-            display: flex;
+/* =====================================================
+   CONTENEDOR
+===================================================== */
 
-            justify-content:
-                space-around;
+.contenedor{
 
-            background-color:
-                rgba(15, 23, 42, 0.6);
+    width:100%;
 
-            padding: 12px;
+    max-width:900px;
 
-            border-radius: 12px;
+    margin:auto;
 
-            margin-bottom: 25px;
+    padding:30px 15px 60px;
+}
 
-            border:
-                1px solid
-                rgba(255, 255, 255, 0.05);
-        }
 
+/* =====================================================
+   HERO
+===================================================== */
 
-        .stat-item {
+.hero{
 
-            display: flex;
+    text-align:center;
 
-            flex-direction:
-                column;
-        }
+    padding:
+    30px 15px 45px;
 
+    animation:
+    aparecer .8s ease;
+}
 
-        .stat-valor {
+.hero-logo{
 
-            color: #38bdf8;
+    width:150px;
+    height:150px;
 
-            font-weight: bold;
+    object-fit:contain;
 
-            font-size: 18px;
-        }
+    filter:
+    drop-shadow(
+        0 0 25px
+        rgba(59,130,246,.6)
+    );
 
+    animation:
+    flotarLogo 4s ease-in-out infinite;
+}
 
-        .stat-label {
+@keyframes flotarLogo{
 
-            color: #94a3b8;
+    0%,100%{
+        transform:translateY(0);
+    }
 
-            font-size: 11px;
+    50%{
+        transform:translateY(-8px);
+    }
+}
 
-            text-transform: uppercase;
-        }
+.hero h1{
 
+    margin-top:12px;
 
-        /* =========================================
-           MVP DEL PARTIDO
-           ========================================= */
+    font-size:
+    clamp(32px,7vw,55px);
 
-        .mvp-card {
+    letter-spacing:5px;
 
-            position: relative;
+    text-transform:uppercase;
 
-            margin:
-                25px 0;
+    text-shadow:
+    0 0 25px
+    rgba(59,130,246,.4);
+}
 
-            padding: 8px;
+.hero p{
 
-            border-radius: 20px;
+    color:var(--gris);
 
-            background:
-                linear-gradient(
-                    145deg,
-                    #020617,
-                    #172554,
-                    #020617
-                );
+    margin-top:8px;
 
-            border:
-                1px solid
-                rgba(59, 130, 246, 0.5);
+    font-size:12px;
 
-            box-shadow:
+    letter-spacing:3px;
 
-                0 10px 30px
-                rgba(0, 0, 0, 0.7),
+    text-transform:uppercase;
+}
 
-                0 0 25px
-                rgba(37, 99, 235, 0.25);
+.estado{
 
-            overflow: hidden;
-        }
+    display:inline-flex;
 
+    align-items:center;
 
-        /* Efecto de brillo */
+    gap:7px;
 
-        .mvp-card::before {
+    margin-top:18px;
 
-            content: "";
+    padding:
+    7px 13px;
 
-            position: absolute;
+    border-radius:50px;
 
-            inset: 0;
+    background:
+    rgba(34,197,94,.08);
 
-            background:
-                linear-gradient(
-                    120deg,
-                    transparent,
-                    rgba(59, 130, 246, 0.15),
-                    transparent
-                );
+    border:
+    1px solid
+    rgba(34,197,94,.25);
 
-            pointer-events: none;
-        }
+    color:#86efac;
 
+    font-size:9px;
 
-        .mvp-titulo {
+    letter-spacing:1.5px;
 
-            position: relative;
+    text-transform:uppercase;
+}
 
-            z-index: 2;
+.estado span{
 
-            text-align: center;
+    width:7px;
+    height:7px;
 
-            color: #ffffff;
+    border-radius:50%;
 
-            font-size: 15px;
+    background:#22c55e;
 
-            font-weight: 900;
+    box-shadow:
+    0 0 10px #22c55e;
+}
 
-            letter-spacing: 2px;
 
-            text-transform: uppercase;
+/* =====================================================
+   SECCIONES
+===================================================== */
 
-            margin:
-                8px 0 10px;
-        }
+.seccion{
 
+    margin-bottom:45px;
 
-        .mvp-titulo span {
+    scroll-margin-top:80px;
+}
 
-            color: #38bdf8;
-        }
+.titulo-seccion{
 
+    display:flex;
 
-        /* Imagen del MVP */
+    align-items:center;
 
-        .mvp-imagen {
+    gap:10px;
 
-            position: relative;
+    margin-bottom:18px;
+}
 
-            z-index: 2;
+.titulo-seccion h2{
 
-            width: 100%;
+    font-size:18px;
 
-            height: auto;
+    letter-spacing:1px;
 
-            display: block;
+    text-transform:uppercase;
+}
 
-            border-radius: 14px;
+.titulo-seccion span{
 
-            box-shadow:
-                0 8px 25px
-                rgba(0, 0, 0, 0.6);
+    flex:1;
 
-            transition:
-                transform 0.4s ease,
-                filter 0.4s ease;
-        }
+    height:1px;
 
+    background:
+    linear-gradient(
+        90deg,
+        rgba(59,130,246,.5),
+        transparent
+    );
+}
 
-        .mvp-imagen:hover {
 
-            transform:
-                scale(1.02);
+/* =====================================================
+   TARJETAS
+===================================================== */
 
-            filter:
-                brightness(1.08);
-        }
+.card{
 
+    background:
+    linear-gradient(
+        145deg,
+        rgba(15,27,51,.95),
+        rgba(0,0,50,.95)
+    );
 
-        /* Línea decorativa */
+    border:
+    1px solid
+    rgba(59,130,246,.22);
 
-        .mvp-linea {
+    border-radius:20px;
 
-            position: relative;
+    padding:20px;
 
-            z-index: 2;
+    box-shadow:
+    0 15px 40px
+    rgba(0,0,0,.4);
 
-            width: 60px;
+    transition:
+    transform .3s,
+    border-color .3s;
+}
 
-            height: 3px;
+.card:hover{
 
-            margin:
-                10px auto 8px;
+    transform:translateY(-3px);
 
-            background: #3b82f6;
+    border-color:
+    rgba(59,130,246,.5);
+}
 
-            border-radius: 10px;
-        }
 
+/* =====================================================
+   MARCADOR
+===================================================== */
 
-        /* Nombre */
+.marcador{
 
-        .mvp-nombre {
+    display:flex;
 
-            position: relative;
+    align-items:center;
 
-            z-index: 2;
+    justify-content:center;
 
-            text-align: center;
+    gap:25px;
 
-            color: #ffffff;
+    text-align:center;
+}
 
-            font-size: 24px;
+.equipo{
 
-            font-weight: 900;
+    width:120px;
 
-            letter-spacing: 3px;
+    display:flex;
 
-            margin:
-                8px 0 10px;
+    flex-direction:column;
 
-            text-transform: uppercase;
+    align-items:center;
 
-            text-shadow:
-                0 0 10px
-                rgba(59, 130, 246, 0.5);
-        }
+    gap:8px;
 
+    font-size:12px;
 
-        /* =========================================
-           MARCADOR FINAL
-           ========================================= */
+    font-weight:bold;
+}
 
-        .marcador-final {
+.equipo img{
 
-            background:
-                linear-gradient(
-                    145deg,
-                    #020617,
-                    #172554,
-                    #020617
-                );
+    width:70px;
+    height:70px;
 
-            border:
-                1px solid
-                rgba(59, 130, 246, 0.5);
+    object-fit:contain;
 
-            border-radius: 18px;
+    filter:
+    drop-shadow(
+        0 0 12px
+        rgba(59,130,246,.4)
+    );
+}
 
-            padding:
-                20px 12px;
+.resultado{
 
-            margin-bottom: 25px;
+    display:flex;
 
-            box-shadow:
+    align-items:center;
 
-                0 10px 25px
-                rgba(0, 0, 0, 0.6),
+    gap:10px;
+}
 
-                0 0 20px
-                rgba(37, 99, 235, 0.2);
-        }
+.resultado .gol{
 
+    font-size:50px;
 
-        .final-titulo {
+    font-weight:900;
+}
 
-            color: #38bdf8;
+.resultado .gol-ganador{
 
-            font-size: 11px;
+    color:var(--azul2);
 
-            font-weight: bold;
+    text-shadow:
+    0 0 20px
+    rgba(56,189,248,.5);
+}
 
-            text-transform: uppercase;
+.resultado .guion{
 
-            letter-spacing: 2px;
+    color:#64748b;
 
-            margin-bottom: 15px;
-        }
+    font-size:30px;
+}
 
+.final{
 
-        .marcador-equipos {
+    text-align:center;
 
-            display: flex;
+    color:var(--azul2);
 
-            justify-content:
-                space-around;
+    font-size:9px;
 
-            align-items: center;
+    letter-spacing:2px;
 
-            gap: 10px;
-        }
+    text-transform:uppercase;
 
+    margin-bottom:15px;
+}
 
-        .equipo-final {
 
-            display: flex;
+/* =====================================================
+   MVP
+===================================================== */
 
-            flex-direction: column;
+.mvp{
 
-            align-items: center;
+    position:relative;
 
-            gap: 7px;
+    overflow:hidden;
 
-            color: white;
+    text-align:center;
 
-            font-weight: bold;
+    background:
+    linear-gradient(
+        145deg,
+        #020617,
+        #172554,
+        #020617
+    );
+}
 
-            font-size: 13px;
+.mvp::before{
 
-            width: 100px;
-        }
+    content:"";
 
+    position:absolute;
 
-        .escudo-final {
+    width:250px;
+    height:250px;
 
-            width: 55px;
+    background:
+    rgba(59,130,246,.12);
 
-            height: 55px;
+    filter:blur(60px);
 
-            object-fit: contain;
-        }
+    top:-120px;
+    right:-80px;
+}
 
+.mvp-badge{
 
-        /* Resultado */
+    display:inline-block;
 
-        .resultado {
+    padding:
+    7px 15px;
 
-            display: flex;
+    border-radius:50px;
 
-            align-items: center;
+    background:
+    rgba(245,158,11,.12);
 
-            gap: 8px;
-        }
+    border:
+    1px solid
+    rgba(245,158,11,.4);
 
+    color:#fbbf24;
 
-        .gol {
+    font-size:10px;
 
-            color: white;
+    font-weight:bold;
 
-            font-size: 38px;
+    letter-spacing:2px;
 
-            font-weight: 900;
+    margin-bottom:15px;
+}
 
-            line-height: 1;
+.mvp img{
 
-            text-shadow:
-                0 0 15px
-                rgba(59, 130, 246, 0.5);
-        }
+    width:100%;
 
+    max-width:500px;
 
-        .guion {
+    display:block;
 
-            color: #60a5fa;
+    margin:auto;
 
-            font-size: 25px;
+    border-radius:15px;
 
-            font-weight: bold;
-        }
+    position:relative;
 
+    z-index:2;
 
-        /* Ganador */
+    box-shadow:
+    0 15px 35px
+    rgba(0,0,0,.6);
 
-        .ganador {
+    transition:.4s;
+}
 
-            color: #38bdf8;
+.mvp img:hover{
 
-            text-shadow:
-                0 0 18px
-                rgba(56, 189, 248, 0.6);
-        }
+    transform:scale(1.02);
+}
 
+.mvp h3{
 
-        .final-mensaje {
+    margin-top:15px;
 
-            color: #94a3b8;
+    font-size:30px;
 
-            font-size: 10px;
+    letter-spacing:4px;
+}
 
-            margin-top: 15px;
+.mvp p{
 
-            text-transform: uppercase;
+    color:var(--gris);
 
-            letter-spacing: 1px;
-        }
+    font-size:10px;
 
+    letter-spacing:2px;
 
-        /* =========================================
-           BOTONES
-           ========================================= */
+    text-transform:uppercase;
 
-        .acciones {
+    margin-top:5px;
+}
 
-            display: flex;
 
-            flex-direction: column;
+/* =====================================================
+   ESTADÍSTICAS
+===================================================== */
 
-            gap: 12px;
-        }
+.stats{
 
+    display:grid;
 
-        /* Botón ver partidos */
+    grid-template-columns:
+    repeat(4,1fr);
 
-        .boton-contacto {
+    gap:10px;
+}
 
-            display: block;
+.stat{
 
-            background-color: #3b82f6;
+    text-align:center;
 
-            color: white;
+    padding:18px 5px;
 
-            text-decoration: none;
+    background:
+    rgba(2,6,23,.55);
 
-            padding:
-                12px 20px;
+    border:
+    1px solid
+    rgba(255,255,255,.06);
 
-            border-radius: 50px;
+    border-radius:15px;
 
-            font-weight: bold;
+    cursor:pointer;
 
-            font-size: 14px;
+    transition:.3s;
+}
 
-            transition:
-                all 0.3s ease;
+.stat:hover{
 
-            box-shadow:
-                0 4px 12px
-                rgba(59, 130, 246, 0.3);
-        }
+    transform:translateY(-5px);
 
+    border-color:
+    rgba(59,130,246,.5);
 
-        .boton-contacto:hover {
+    background:
+    rgba(37,99,235,.12);
+}
 
-            background-color: #2563eb;
+.stat strong{
 
-            transform:
-                scale(1.03);
+    display:block;
 
-            box-shadow:
-                0 6px 18px
-                rgba(59, 130, 246, 0.5);
-        }
+    color:var(--azul2);
 
+    font-size:25px;
+}
 
-        /* =========================================
-           BOTÓN VOTAR MVP
-           ========================================= */
+.stat small{
 
-        .boton-votar-mvp {
+    color:var(--gris);
 
-            display: block;
+    font-size:9px;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #f59e0b,
-                    #d97706
-                );
+    text-transform:uppercase;
 
-            color: white;
+    letter-spacing:1px;
+}
 
-            text-decoration: none;
 
-            padding:
-                12px 20px;
+/* =====================================================
+   BARRAS
+===================================================== */
 
-            border-radius: 50px;
+.barra-contenedor{
 
-            font-weight: bold;
+    margin-top:18px;
+}
 
-            font-size: 14px;
+.barra-info{
 
-            transition:
-                all 0.3s ease;
+    display:flex;
 
-            box-shadow:
-                0 4px 12px
-                rgba(245, 158, 11, 0.3);
-        }
+    justify-content:space-between;
 
+    color:var(--gris2);
 
-        .boton-votar-mvp:hover {
+    font-size:10px;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #d97706,
-                    #b45309
-                );
+    margin-bottom:5px;
+}
 
-            transform:
-                scale(1.03);
+.barra{
 
-            box-shadow:
-                0 6px 18px
-                rgba(245, 158, 11, 0.5);
-        }
+    height:8px;
 
+    background:#0f172a;
 
-        /* =========================================
-           BOTÓN APOYO
-           ========================================= */
+    border-radius:20px;
 
-        .boton-apoyo {
+    overflow:hidden;
+}
 
-            background: transparent;
+.barra div{
 
-            color: #e2e8f0;
+    height:100%;
 
-            border:
-                2px solid #3b82f6;
+    width:70%;
 
-            padding:
-                10px 20px;
+    background:
+    linear-gradient(
+        90deg,
+        #2563eb,
+        #38bdf8
+    );
 
-            border-radius: 50px;
+    border-radius:20px;
+}
 
-            font-weight: bold;
 
-            font-size: 13px;
+/* =====================================================
+   PLANTILLA
+===================================================== */
 
-            cursor: pointer;
+.plantilla{
 
-            transition:
-                all 0.3s ease;
-        }
+    display:grid;
 
+    grid-template-columns:
+    repeat(3,1fr);
 
-        .boton-apoyo:hover {
+    gap:12px;
+}
 
-            background-color:
-                rgba(59, 130, 246, 0.2);
+.jugador{
 
-            color: #ffffff;
-        }
+    padding:15px 8px;
 
+    text-align:center;
 
-        .boton-apoyo:active {
+    background:
+    rgba(2,6,23,.55);
 
-            transform:
-                scale(0.95);
-        }
+    border:
+    1px solid
+    rgba(59,130,246,.15);
 
+    border-radius:16px;
 
-        /* =========================================
-           CELULARES
-           ========================================= */
+    cursor:pointer;
 
-        @media (max-width: 500px) {
+    transition:.3s;
+}
 
-            body {
+.jugador:hover{
 
-                padding: 10px;
-            }
+    transform:
+    translateY(-5px)
+    scale(1.02);
 
+    border-color:
+    rgba(59,130,246,.5);
+}
 
-            .tarjeta {
+.jugador-avatar{
 
-                width: 100%;
+    width:65px;
+    height:65px;
 
-                padding: 20px;
+    border-radius:50%;
 
-                box-sizing: border-box;
-            }
+    margin:auto;
 
+    display:flex;
 
-            .mvp-nombre {
+    justify-content:center;
+    align-items:center;
 
-                font-size: 21px;
+    background:
+    linear-gradient(
+        145deg,
+        #172554,
+        #020617
+    );
 
-                letter-spacing: 2px;
-            }
+    border:
+    1px solid
+    rgba(59,130,246,.35);
 
+    color:#38bdf8;
 
-            .mvp-titulo {
+    font-size:22px;
 
-                font-size: 13px;
-            }
+    font-weight:900;
+}
 
+.jugador h3{
 
-            .gol {
+    margin-top:9px;
 
-                font-size: 32px;
-            }
+    font-size:12px;
+}
 
+.jugador p{
 
-            .equipo-final {
+    color:var(--gris);
 
-                font-size: 11px;
+    font-size:9px;
 
-                width: 80px;
-            }
+    margin-top:3px;
+}
 
 
-            .escudo-final {
+/* =====================================================
+   MODAL JUGADOR
+===================================================== */
 
-                width: 48px;
+.modal{
 
-                height: 48px;
-            }
+    position:fixed;
 
-        }
+    inset:0;
 
-    </style>
+    background:
+    rgba(0,0,0,.75);
+
+    backdrop-filter:blur(8px);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:20px;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:.3s;
+
+    z-index:200;
+}
+
+.modal.activo{
+
+    opacity:1;
+
+    pointer-events:auto;
+}
+
+.modal-contenido{
+
+    width:100%;
+
+    max-width:350px;
+
+    background:
+    linear-gradient(
+        145deg,
+        #0f1b33,
+        #020617
+    );
+
+    border:
+    1px solid
+    rgba(59,130,246,.4);
+
+    border-radius:20px;
+
+    padding:25px;
+
+    text-align:center;
+
+    transform:scale(.8);
+
+    transition:.3s;
+}
+
+.modal.activo .modal-contenido{
+
+    transform:scale(1);
+}
+
+.cerrar{
+
+    float:right;
+
+    background:none;
+
+    border:none;
+
+    color:#94a3b8;
+
+    font-size:20px;
+
+    cursor:pointer;
+}
+
+.modal-numero{
+
+    font-size:50px;
+
+    font-weight:900;
+
+    color:#38bdf8;
+
+    margin-top:15px;
+}
+
+.modal-contenido h2{
+
+    margin-top:5px;
+}
+
+.modal-contenido p{
+
+    color:#94a3b8;
+
+    font-size:11px;
+
+    margin-top:8px;
+}
+
+
+/* =====================================================
+   TABLA
+===================================================== */
+
+.tabla{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    font-size:10px;
+}
+
+.tabla th{
+
+    color:#64748b;
+
+    font-size:8px;
+
+    text-transform:uppercase;
+
+    padding:10px 5px;
+
+    border-bottom:
+    1px solid
+    rgba(255,255,255,.08);
+}
+
+.tabla td{
+
+    padding:12px 5px;
+
+    text-align:center;
+
+    border-bottom:
+    1px solid
+    rgba(255,255,255,.05);
+}
+
+.tabla td:first-child,
+.tabla th:first-child{
+
+    text-align:left;
+}
+
+.tabla .invictus{
+
+    background:
+    rgba(37,99,235,.12);
+
+    color:#38bdf8;
+
+    font-weight:bold;
+}
+
+
+/* =====================================================
+   LOGROS
+===================================================== */
+
+.logros{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:10px;
+}
+
+.logro{
+
+    text-align:center;
+
+    padding:18px 8px;
+
+    border-radius:15px;
+
+    background:
+    rgba(2,6,23,.5);
+
+    border:
+    1px solid
+    rgba(255,255,255,.06);
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.logro:hover{
+
+    transform:
+    translateY(-5px);
+
+    border-color:
+    rgba(245,158,11,.5);
+}
+
+.logro .icono{
+
+    font-size:30px;
+
+    margin-bottom:8px;
+}
+
+.logro h3{
+
+    font-size:10px;
+}
+
+.logro p{
+
+    color:#64748b;
+
+    font-size:8px;
+
+    margin-top:4px;
+}
+
+
+/* =====================================================
+   GALERÍA
+===================================================== */
+
+.galeria{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(2,1fr);
+
+    gap:10px;
+}
+
+.foto{
+
+    height:150px;
+
+    border-radius:15px;
+
+    overflow:hidden;
+
+    background:
+    linear-gradient(
+        135deg,
+        #172554,
+        #020617
+    );
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:#64748b;
+
+    border:
+    1px solid
+    rgba(59,130,246,.15);
+}
+
+.foto img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+}
+
+
+/* =====================================================
+   BOTONES
+===================================================== */
+
+.botones{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+}
+
+.btn{
+
+    border:none;
+
+    text-decoration:none;
+
+    padding:13px;
+
+    border-radius:50px;
+
+    text-align:center;
+
+    font-weight:bold;
+
+    font-size:12px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    font-family:inherit;
+}
+
+.btn:hover{
+
+    transform:
+    translateY(-2px);
+
+    filter:brightness(1.1);
+}
+
+.btn-mvp{
+
+    color:white;
+
+    background:
+    linear-gradient(
+        135deg,
+        #f59e0b,
+        #d97706
+    );
+}
+
+.btn-azul{
+
+    color:white;
+
+    background:
+    linear-gradient(
+        135deg,
+        #3b82f6,
+        #2563eb
+    );
+}
+
+.btn-transparente{
+
+    color:white;
+
+    background:transparent;
+
+    border:
+    1px solid
+    rgba(59,130,246,.4);
+}
+
+
+/* =====================================================
+   APOYO
+===================================================== */
+
+.apoyo{
+
+    text-align:center;
+
+    margin-top:15px;
+
+    color:#94a3b8;
+
+    font-size:10px;
+}
+
+#contador{
+
+    color:#38bdf8;
+
+    font-weight:bold;
+}
+
+
+/* =====================================================
+   NOTIFICACIÓN
+===================================================== */
+
+.notificacion{
+
+    position:fixed;
+
+    left:50%;
+
+    bottom:25px;
+
+    transform:
+    translate(-50%,100px);
+
+    background:
+    rgba(15,23,42,.95);
+
+    border:
+    1px solid
+    rgba(59,130,246,.4);
+
+    padding:
+    12px 18px;
+
+    border-radius:50px;
+
+    font-size:11px;
+
+    transition:.4s;
+
+    z-index:500;
+
+    box-shadow:
+    0 10px 30px
+    rgba(0,0,0,.5);
+}
+
+.notificacion.visible{
+
+    transform:
+    translate(-50%,0);
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+
+    text-align:center;
+
+    padding:30px 0;
+
+    color:#475569;
+
+    font-size:9px;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+}
+
+
+/* =====================================================
+   ANIMACIÓN
+===================================================== */
+
+@keyframes aparecer{
+
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:650px){
+
+    .nav-links button{
+
+        font-size:9px;
+
+        padding:7px 6px;
+    }
+
+    .marcador{
+
+        gap:8px;
+    }
+
+    .equipo{
+
+        width:85px;
+    }
+
+    .equipo img{
+
+        width:55px;
+        height:55px;
+    }
+
+    .resultado .gol{
+
+        font-size:38px;
+    }
+
+    .stats{
+
+        grid-template-columns:
+        repeat(2,1fr);
+    }
+
+    .plantilla{
+
+        grid-template-columns:
+        repeat(2,1fr);
+    }
+
+    .logros{
+
+        grid-template-columns:
+        repeat(2,1fr);
+    }
+
+}
+
+</style>
 
 </head>
 
@@ -828,89 +1424,314 @@
 <body>
 
 
-    <!-- =========================================
-         TARJETA PRINCIPAL
-         ========================================= -->
+<!-- =====================================================
+     PARTÍCULAS
+===================================================== -->
 
-    <div class="tarjeta">
+<div class="particulas">
+
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+
+</div>
 
 
-        <!-- ESCUDO DE INVICTUS -->
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<nav class="navbar">
+
+<div class="nav-inner">
+
+    <div class="nav-logo">
+
+        <img src="InvictusFC.png">
+
+        INVICTUS FC
+
+    </div>
+
+
+    <div class="nav-links">
+
+        <button onclick="irA('inicio')">
+            Inicio
+        </button>
+
+        <button onclick="irA('plantilla')">
+            Equipo
+        </button>
+
+        <button onclick="irA('estadisticas')">
+            Stats
+        </button>
+
+        <button onclick="irA('galeria')">
+            Galería
+        </button>
+
+    </div>
+
+</div>
+
+</nav>
+
+
+<!-- =====================================================
+     CONTENEDOR
+===================================================== -->
+
+<main class="contenedor">
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section
+    class="hero"
+    id="inicio"
+>
+
+    <img
+        class="hero-logo"
+        src="InvictusFC.png"
+        alt="Invictus FC"
+    >
+
+    <h1>
+        INVICTUS FC
+    </h1>
+
+    <p>
+        Más que un equipo
+    </p>
+
+    <div class="estado">
+
+        <span></span>
+
+        Temporada en curso
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     ÚLTIMO PARTIDO
+===================================================== -->
+
+<section class="seccion">
+
+    <div class="titulo-seccion">
+
+        <h2>
+            ⚽ Último partido
+        </h2>
+
+        <span></span>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="final">
+            Partido finalizado
+        </div>
+
+
+        <div class="marcador">
+
+
+            <div class="equipo">
+
+                <img
+                    src="InvictusFC.png"
+                    alt="Invictus FC"
+                >
+
+                <span>
+                    Invictus FC
+                </span>
+
+            </div>
+
+
+            <div class="resultado">
+
+                <span class="gol">
+                    2
+                </span>
+
+                <span class="guion">
+                    -
+                </span>
+
+                <span class="gol gol-ganador">
+                    7
+                </span>
+
+            </div>
+
+
+            <div class="equipo">
+
+                <img
+                    src="GallosFC.png"
+                    alt="Gallos FC"
+                >
+
+                <span>
+                    Gallos FC
+                </span>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     MVP
+===================================================== -->
+
+<section class="seccion">
+
+    <div class="titulo-seccion">
+
+        <h2>
+            🏆 MVP
+        </h2>
+
+        <span></span>
+
+    </div>
+
+
+    <div class="card mvp">
+
+        <div class="mvp-badge">
+
+            🏆 MVP DEL PARTIDO
+
+        </div>
+
 
         <img
-            class="avatar"
-            src="InvictusFC.png"
-            alt="Escudo de Invictus FC"
+            src="MVP-Chuyin.png"
+            alt="Chuyin MVP"
         >
 
 
-        <!-- NOMBRE -->
+        <h3>
+            CHUYIN
+        </h3>
 
-        <h2>
-            Invictus FC
-        </h2>
-
-
-        <div class="posicion">
-            Equipo de Fútbol
-        </div>
-
-
-        <!-- DESCRIPCIÓN -->
-
-        <p class="descripcion">
-
-            Más que un club, somos una familia unida
-            por la misma pasión. En este equipo el ego
-            no existe, jugamos con el corazón,
-            apoyamos al compañero en el error y
-            celebramos cada logro como uno solo.
-
+        <p>
+            Jugador más valioso
         </p>
 
+    </div>
 
-        <!-- =========================================
-             ESTADÍSTICAS
-             ========================================= -->
-
-        <div class="stats-container">
+</section>
 
 
-            <div class="stat-item">
+<!-- =====================================================
+     ESTADÍSTICAS
+===================================================== -->
 
-                <span class="stat-valor">
-                    6
-                </span>
+<section
+    class="seccion"
+    id="estadisticas"
+>
 
-                <span class="stat-label">
+    <div class="titulo-seccion">
+
+        <h2>
+            📊 Estadísticas
+        </h2>
+
+        <span></span>
+
+    </div>
+
+
+    <div class="card">
+
+
+        <div class="stats">
+
+
+            <div
+                class="stat"
+                onclick="mostrarInfo('Partidos','5')"
+            >
+
+                <strong>
+                    5
+                </strong>
+
+                <small>
                     Partidos
-                </span>
+                </small>
 
             </div>
 
 
-            <div class="stat-item">
+            <div
+                class="stat"
+                onclick="mostrarInfo('Victorias','1')"
+            >
 
-                <span class="stat-valor">
+                <strong>
                     1
-                </span>
+                </strong>
 
-                <span class="stat-label">
+                <small>
                     Victorias
-                </span>
+                </small>
 
             </div>
 
 
-            <div class="stat-item">
+            <div
+                class="stat"
+                onclick="mostrarInfo('Goles','11')"
+            >
 
-                <span class="stat-valor">
-                    13
-                </span>
+                <strong>
+                    11
+                </strong>
 
-                <span class="stat-label">
+                <small>
                     Goles
-                </span>
+                </small>
+
+            </div>
+
+
+            <div
+                class="stat"
+                onclick="mostrarInfo('MVP','CHUYIN')"
+            >
+
+                <strong>
+                    🏆
+                </strong>
+
+                <small>
+                    MVP
+                </small>
 
             </div>
 
@@ -918,185 +1739,582 @@
         </div>
 
 
-        <!-- =========================================
-             MVP DEL PARTIDO
-             ========================================= -->
+        <div class="barra-contenedor">
 
-        <div class="mvp-card">
+            <div class="barra-info">
 
+                <span>
+                    Goles a favor
+                </span>
 
-            <div class="mvp-titulo">
-
-                🏆
-                <span>MVP</span>
-                DEL PARTIDO
+                <span>
+                    11
+                </span>
 
             </div>
 
+            <div class="barra">
 
-            <!-- IMAGEN DEL MVP -->
+                <div style="width:72%"></div>
+
+            </div>
+
+        </div>
+
+
+        <div class="barra-contenedor">
+
+            <div class="barra-info">
+
+                <span>
+                    Rendimiento
+                </span>
+
+                <span>
+                    70%
+                </span>
+
+            </div>
+
+            <div class="barra">
+
+                <div style="width:70%"></div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PLANTILLA
+===================================================== -->
+
+<section
+    class="seccion"
+    id="plantilla"
+>
+
+    <div class="titulo-seccion">
+
+        <h2>
+            👥 Plantilla
+        </h2>
+
+        <span></span>
+
+    </div>
+
+
+    <div class="plantilla">
+
+
+        <!-- CHUYIN -->
+
+        <div
+            class="jugador"
+            onclick="abrirJugador(
+                'CHUYIN',
+                'MVP',
+                'Jugador destacado del último partido'
+            )"
+        >
+
+            <div class="jugador-avatar">
+                C
+            </div>
+
+            <h3>
+                CHUYIN
+            </h3>
+
+            <p>
+                MVP
+            </p>
+
+        </div>
+
+
+        <!-- JUGADOR 2 -->
+
+        <div
+            class="jugador"
+            onclick="abrirJugador(
+                'Jugador 2',
+                'Jugador',
+                'Información del jugador'
+            )"
+        >
+
+            <div class="jugador-avatar">
+                2
+            </div>
+
+            <h3>
+                Jugador 2
+            </h3>
+
+            <p>
+                Jugador
+            </p>
+
+        </div>
+
+
+        <!-- JUGADOR 3 -->
+
+        <div
+            class="jugador"
+            onclick="abrirJugador(
+                'Jugador 3',
+                'Jugador',
+                'Información del jugador'
+            )"
+        >
+
+            <div class="jugador-avatar">
+                3
+            </div>
+
+            <h3>
+                Jugador 3
+            </h3>
+
+            <p>
+                Jugador
+            </p>
+
+        </div>
+
+
+        <!-- JUGADOR 4 -->
+
+        <div
+            class="jugador"
+            onclick="abrirJugador(
+                'Jugador 4',
+                'Jugador',
+                'Información del jugador'
+            )"
+        >
+
+            <div class="jugador-avatar">
+                4
+            </div>
+
+            <h3>
+                Jugador 4
+            </h3>
+
+            <p>
+                Jugador
+            </p>
+
+        </div>
+
+
+        <!-- JUGADOR 5 -->
+
+        <div
+            class="jugador"
+            onclick="abrirJugador(
+                'Jugador 5',
+                'Jugador',
+                'Información del jugador'
+            )"
+        >
+
+            <div class="jugador-avatar">
+                5
+            </div>
+
+            <h3>
+                Jugador 5
+            </h3>
+
+            <p>
+                Jugador
+            </p>
+
+        </div>
+
+
+        <!-- JUGADOR 6 -->
+
+        <div
+            class="jugador"
+            onclick="abrirJugador(
+                'Jugador 6',
+                'Jugador',
+                'Información del jugador'
+            )"
+        >
+
+            <div class="jugador-avatar">
+                6
+            </div>
+
+            <h3>
+                Jugador 6
+            </h3>
+
+            <p>
+                Jugador
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     TABLA
+===================================================== -->
+
+<section class="seccion">
+
+    <div class="titulo-seccion">
+
+        <h2>
+            📋 Tabla
+        </h2>
+
+        <span></span>
+
+    </div>
+
+
+    <div class="card">
+
+        <table class="tabla">
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        Equipo
+                    </th>
+
+                    <th>
+                        PJ
+                    </th>
+
+                    <th>
+                        G
+                    </th>
+
+                    <th>
+                        DG
+                    </th>
+
+                    <th>
+                        PTS
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                <tr class="invictus">
+
+                    <td>
+                        🛡️ Invictus FC
+                    </td>
+
+                    <td>
+                        5
+                    </td>
+
+                    <td>
+                        1
+                    </td>
+
+                    <td>
+                        -?
+                    </td>
+
+                    <td>
+                        3
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        Equipo 2
+                    </td>
+
+                    <td>
+                        -
+                    </td>
+
+                    <td>
+                        -
+                    </td>
+
+                    <td>
+                        -
+                    </td>
+
+                    <td>
+                        -
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        Equipo 3
+                    </td>
+
+                    <td>
+                        -
+                    </td>
+
+                    <td>
+                        -
+                    </td>
+
+                    <td>
+                        -
+                    </td>
+
+                    <td>
+                        -
+                    </td>
+
+                </tr>
+
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     LOGROS
+===================================================== -->
+
+<section class="seccion">
+
+    <div class="titulo-seccion">
+
+        <h2>
+            🏅 Logros
+        </h2>
+
+        <span></span>
+
+    </div>
+
+
+    <div class="logros">
+
+
+        <div
+            class="logro"
+            onclick="notificar('🏆 Sigue construyendo la historia de Invictus')"
+        >
+
+            <div class="icono">
+                🏆
+            </div>
+
+            <h3>
+                Primera victoria
+            </h3>
+
+            <p>
+                Temporada actual
+            </p>
+
+        </div>
+
+
+        <div
+            class="logro"
+            onclick="notificar('🔥 CHUYIN fue elegido MVP')"
+        >
+
+            <div class="icono">
+                ⭐
+            </div>
+
+            <h3>
+                MVP
+            </h3>
+
+            <p>
+                CHUYIN
+            </p>
+
+        </div>
+
+
+        <div
+            class="logro"
+            onclick="notificar('⚽ 11 goles registrados')"
+        >
+
+            <div class="icono">
+                ⚽
+            </div>
+
+            <h3>
+                11 goles
+            </h3>
+
+            <p>
+                Temporada
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     GALERÍA
+===================================================== -->
+
+<section
+    class="seccion"
+    id="galeria"
+>
+
+    <div class="titulo-seccion">
+
+        <h2>
+            📸 Galería
+        </h2>
+
+        <span></span>
+
+    </div>
+
+
+    <div class="galeria">
+
+
+        <div class="foto">
 
             <img
-                class="mvp-imagen"
-                src="MVPChuyin.png"
-                alt="Chuyin - MVP del Partido"
+                src="MVP-Chuyin.png"
+                alt="MVP"
             >
 
-
-            <!-- LÍNEA -->
-
-            <div class="mvp-linea"></div>
+        </div>
 
 
-            <!-- NOMBRE -->
+        <div class="foto">
 
-            <div class="mvp-nombre">
-
-                CHUYIN
-
-            </div>
-
+            <img
+                src="InvictusFC.png"
+                alt="Invictus FC"
+                style="
+                object-fit:contain;
+                padding:25px;
+                "
+            >
 
         </div>
 
 
-        <!-- =========================================
-             MARCADOR FINAL
-             ========================================= -->
+        <div class="foto">
 
-        <div class="marcador-final">
-
-
-            <div class="final-titulo">
-
-                🏁 Partido Finalizado
-
-            </div>
-
-
-            <div class="marcador-equipos">
-
-
-                <!-- =================================
-                     INVICTUS FC
-                     ================================= -->
-
-                <div class="equipo-final">
-
-                    <img
-                        class="escudo-final"
-                        src="InvictusFC.png"
-                        alt="Invictus FC"
-                    >
-
-                    <span>
-                        Invictus FC
-                    </span>
-
-                </div>
-
-
-                <!-- =================================
-                     MARCADOR
-                     ================================= -->
-
-                <div class="resultado">
-
-                    <span class="gol">
-                        2
-                    </span>
-
-                    <span class="guion">
-                        -
-                    </span>
-
-                    <span class="gol ganador">
-                        7
-                    </span>
-
-                </div>
-
-
-                <!-- =================================
-                     GALLOS FC
-                     ================================= -->
-
-                <div class="equipo-final">
-
-                    <img
-                        class="escudo-final"
-                        src="GallosFC.png"
-                        alt="Gallos FC"
-                    >
-
-                    <span>
-                        Gallos FC
-                    </span>
-
-                </div>
-
-
-            </div>
-
-
-            <div class="final-mensaje">
-
-                Resultado Final
-
-            </div>
-
+            <span>
+                📸 Próximamente
+            </span>
 
         </div>
 
 
-        <!-- =========================================
-             BOTONES
-             ========================================= -->
+        <div class="foto">
 
-        <div class="acciones">
+            <span>
+                📸 Próximamente
+            </span>
+
+        </div>
 
 
-            <!-- VOTAR MVP -->
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     ACCIONES
+===================================================== -->
+
+<section class="seccion">
+
+    <div class="titulo-seccion">
+
+        <h2>
+            🔥 Participa
+        </h2>
+
+        <span></span>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="botones">
+
 
             <a
+                class="btn btn-mvp"
                 href="https://docs.google.com/forms/d/e/1FAIpQLSdO_Vt-FyWbJdxUJZt7axbSkUrxyKg748epWhCwpc6GiP4WxQ/viewform?usp=header"
                 target="_blank"
-                class="boton-votar-mvp"
             >
 
-                🏆 Votar MVP del Partido
+                🏆 Votar MVP
 
             </a>
 
-
-            <!-- VER PARTIDOS -->
 
             <a
+                class="btn btn-azul"
                 href="https://www.copafacil.com/es"
                 target="_blank"
-                class="boton-contacto"
             >
 
-                ⚽ Ver Partidos
+                ⚽ Ver partidos
 
             </a>
 
 
-            <!-- APOYO -->
-
             <button
-                class="boton-apoyo"
-                id="btnApoyo"
+                class="btn btn-transparente"
                 onclick="darApoyo()"
             >
 
-                🙌 ¡Enviar Apoyo!
-
-                (
-                <span id="contador">
-                    0
-                </span>
-                )
+                🙌 Apoyar a Invictus
 
             </button>
 
@@ -1104,56 +2322,260 @@
         </div>
 
 
+        <div class="apoyo">
+
+            Apoyos enviados:
+
+            <span id="contador">
+                0
+            </span>
+
+        </div>
+
     </div>
 
-
-    <!-- =========================================
-         JAVASCRIPT
-         ========================================= -->
-
-    <script>
+</section>
 
 
-        /* =========================================
-           SISTEMA DE APOYO
-           ========================================= */
-
-        let puntos = 0;
+</main>
 
 
-        function darApoyo() {
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    INVICTUS FC
+
+    <br><br>
+
+    DISCIPLINA · UNIÓN · PASIÓN
+
+</footer>
 
 
-            puntos++;
+<!-- =====================================================
+     MODAL
+===================================================== -->
+
+<div
+    class="modal"
+    id="modal"
+    onclick="cerrarModal(event)"
+>
+
+    <div
+        class="modal-contenido"
+        onclick="event.stopPropagation()"
+    >
+
+        <button
+            class="cerrar"
+            onclick="cerrarModal()"
+        >
+            ×
+        </button>
 
 
-            document.getElementById(
-                'contador'
-            ).innerText = puntos;
+        <div
+            class="modal-numero"
+            id="modalNumero"
+        >
+            ⚽
+        </div>
 
 
-            const btn =
-                document.getElementById(
-                    'btnApoyo'
-                );
+        <h2 id="modalTitulo">
+            Jugador
+        </h2>
 
 
-            btn.style.borderColor =
-                '#22c55e';
+        <p id="modalTexto">
+            Información
+        </p>
+
+    </div>
+
+</div>
 
 
-            setTimeout(() => {
+<!-- =====================================================
+     NOTIFICACIÓN
+===================================================== -->
 
-                btn.style.borderColor =
-                    '#3b82f6';
+<div
+    class="notificacion"
+    id="notificacion"
+>
+    🙌 ¡Apoyo enviado!
+</div>
 
-            }, 300);
 
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+
+/* =====================================================
+   NAVEGACIÓN
+===================================================== */
+
+function irA(id){
+
+    const elemento =
+    document.getElementById(id);
+
+    if(elemento){
+
+        elemento.scrollIntoView({
+            behavior:"smooth"
+        });
+
+    }
+
+}
+
+
+/* =====================================================
+   APOYO
+===================================================== */
+
+let apoyos = 0;
+
+function darApoyo(){
+
+    apoyos++;
+
+    document.getElementById(
+        "contador"
+    ).innerText = apoyos;
+
+    notificar(
+        "🙌 ¡Apoyo enviado a Invictus FC!"
+    );
+
+}
+
+
+/* =====================================================
+   NOTIFICACIÓN
+===================================================== */
+
+function notificar(mensaje){
+
+    const elemento =
+    document.getElementById(
+        "notificacion"
+    );
+
+    elemento.innerText = mensaje;
+
+    elemento.classList.add(
+        "visible"
+    );
+
+    setTimeout(()=>{
+
+        elemento.classList.remove(
+            "visible"
+        );
+
+    },1800);
+
+}
+
+
+/* =====================================================
+   INFORMACIÓN DE ESTADÍSTICAS
+===================================================== */
+
+function mostrarInfo(titulo,valor){
+
+    document.getElementById(
+        "modalNumero"
+    ).innerText = valor;
+
+    document.getElementById(
+        "modalTitulo"
+    ).innerText = titulo;
+
+    document.getElementById(
+        "modalTexto"
+    ).innerText =
+    "Información registrada de Invictus FC.";
+
+    document.getElementById(
+        "modal"
+    ).classList.add("activo");
+
+}
+
+
+/* =====================================================
+   JUGADOR
+===================================================== */
+
+function abrirJugador(
+    nombre,
+    posicion,
+    descripcion
+){
+
+    document.getElementById(
+        "modalNumero"
+    ).innerText = "⚽";
+
+    document.getElementById(
+        "modalTitulo"
+    ).innerText = nombre;
+
+    document.getElementById(
+        "modalTexto"
+    ).innerText =
+    posicion + " · " + descripcion;
+
+    document.getElementById(
+        "modal"
+    ).classList.add("activo");
+
+}
+
+
+/* =====================================================
+   CERRAR MODAL
+===================================================== */
+
+function cerrarModal(){
+
+    document.getElementById(
+        "modal"
+    ).classList.remove("activo");
+
+}
+
+
+/* =====================================================
+   ESCAPE PARA CERRAR
+===================================================== */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Escape"){
+
+            cerrarModal();
 
         }
 
+    }
+);
 
-    </script>
+
+</script>
 
 
 </body>
