@@ -682,6 +682,184 @@ body{
 }
 
 
+
+/* =====================================================
+   HISTORIAL DE MVPs
+===================================================== */
+
+.historial-mvp{
+    display:grid;
+    gap:12px;
+}
+
+.mvp-historial-card{
+    position:relative;
+    display:grid;
+    grid-template-columns:72px 1fr auto;
+    align-items:center;
+    gap:14px;
+    padding:16px;
+    background:
+        linear-gradient(145deg, rgba(15,27,51,.96), rgba(2,6,23,.96));
+    border:1px solid rgba(245,158,11,.18);
+    border-radius:18px;
+    cursor:pointer;
+    overflow:hidden;
+    transition:.3s;
+}
+
+.mvp-historial-card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(90deg, rgba(245,158,11,.07), transparent 55%);
+    pointer-events:none;
+}
+
+.mvp-historial-card:hover{
+    transform:translateY(-4px);
+    border-color:rgba(245,158,11,.55);
+    box-shadow:0 12px 35px rgba(0,0,0,.35);
+}
+
+.mvp-historial-avatar{
+    width:72px;
+    height:72px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(145deg,#172554,#020617);
+    border:2px solid rgba(245,158,11,.45);
+    color:#fbbf24;
+    font-size:25px;
+    font-weight:900;
+    box-shadow:0 0 22px rgba(245,158,11,.12);
+    overflow:hidden;
+}
+
+.mvp-historial-avatar img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.mvp-historial-info{
+    position:relative;
+    z-index:1;
+}
+
+.mvp-historial-info h3{
+    font-size:16px;
+    letter-spacing:1px;
+}
+
+.mvp-historial-info p{
+    margin-top:5px;
+    color:var(--gris);
+    font-size:9px;
+    line-height:1.5;
+}
+
+.mvp-historial-stats{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    margin-top:8px;
+}
+
+.mvp-chip{
+    padding:5px 7px;
+    border-radius:8px;
+    background:rgba(59,130,246,.10);
+    border:1px solid rgba(59,130,246,.15);
+    color:#cbd5e1;
+    font-size:8px;
+}
+
+.mvp-historial-year{
+    position:relative;
+    z-index:1;
+    align-self:start;
+    padding:5px 8px;
+    border-radius:20px;
+    background:rgba(245,158,11,.10);
+    border:1px solid rgba(245,158,11,.3);
+    color:#fbbf24;
+    font-size:8px;
+    font-weight:bold;
+    letter-spacing:1px;
+}
+
+.mvp-historial-top{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.mvp-corona{
+    font-size:16px;
+}
+
+.mvp-historial-empty{
+    text-align:center;
+    color:var(--gris);
+    padding:25px;
+    font-size:11px;
+}
+
+.mvp-resumen{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:8px;
+    margin-bottom:12px;
+}
+
+.mvp-resumen-item{
+    text-align:center;
+    padding:12px 5px;
+    border-radius:14px;
+    background:rgba(2,6,23,.55);
+    border:1px solid rgba(245,158,11,.12);
+}
+
+.mvp-resumen-item strong{
+    display:block;
+    color:#fbbf24;
+    font-size:20px;
+}
+
+.mvp-resumen-item small{
+    display:block;
+    margin-top:4px;
+    color:var(--gris);
+    font-size:8px;
+    text-transform:uppercase;
+    letter-spacing:.7px;
+}
+
+@media(max-width:650px){
+    .mvp-historial-card{
+        grid-template-columns:58px 1fr;
+    }
+
+    .mvp-historial-avatar{
+        width:58px;
+        height:58px;
+        font-size:20px;
+    }
+
+    .mvp-historial-year{
+        position:absolute;
+        top:12px;
+        right:12px;
+    }
+
+    .mvp-resumen{
+        grid-template-columns:repeat(3,1fr);
+    }
+}
+
 /* =====================================================
    ESTADÍSTICAS
 ===================================================== */
@@ -1470,6 +1648,10 @@ footer{
             Stats
         </button>
 
+        <button onclick="irA('historial-mvp')">
+            MVPs
+        </button>
+
         <button onclick="irA('galeria')">
             Galería
         </button>
@@ -1640,6 +1822,50 @@ footer{
         <p>
             Jugador más valioso
         </p>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     HISTORIAL DE MVPs
+===================================================== -->
+
+<section class="seccion" id="historial-mvp">
+
+    <div class="titulo-seccion">
+
+        <h2>
+            🏆 Historial de MVPs
+        </h2>
+
+        <span></span>
+
+    </div>
+
+    <div class="card">
+
+        <div class="mvp-resumen">
+
+            <div class="mvp-resumen-item">
+                <strong id="totalMVPs">0</strong>
+                <small>MVPs registrados</small>
+            </div>
+
+            <div class="mvp-resumen-item">
+                <strong id="liderMVP">—</strong>
+                <small>Más MVPs</small>
+            </div>
+
+            <div class="mvp-resumen-item">
+                <strong id="ultimoMVP">—</strong>
+                <small>MVP reciente</small>
+            </div>
+
+        </div>
+
+        <div class="historial-mvp" id="historialMVP"></div>
 
     </div>
 
@@ -2419,6 +2645,212 @@ footer{
 <script>
 
 
+
+/* =====================================================
+   HISTORIAL DE MVPs
+===================================================== */
+
+/*
+   Para agregar un nuevo MVP solamente duplica un objeto
+   dentro de este arreglo.
+*/
+const historialMVPs = [
+
+    {
+        jugador:"CHUYIN",
+        temporada:"2026",
+        fecha:"10/08/2026",
+        partido:"Invictus FC 2 - 7 Gallos FC",
+        goles:0,
+        asistencias:0,
+        descripcion:"MVP del partido más reciente.",
+        imagen:"MVPChuyin.png"
+    },
+
+    /*
+    EJEMPLO PARA AGREGAR OTRO MVP:
+
+    {
+        jugador:"MOYRON",
+        temporada:"2026",
+        fecha:"05/08/2026",
+        partido:"Invictus FC 3 - 1 Rival FC",
+        goles:3,
+        asistencias:1,
+        descripcion:"Actuación destacada.",
+        imagen:"MoyronMVP.png"
+    }
+    */
+
+];
+
+function renderHistorialMVP(){
+
+    const contenedor =
+        document.getElementById("historialMVP");
+
+    if(!contenedor) return;
+
+    contenedor.innerHTML = "";
+
+    if(historialMVPs.length === 0){
+
+        contenedor.innerHTML = `
+            <div class="mvp-historial-empty">
+                🏆 Todavía no hay MVPs registrados.
+            </div>
+        `;
+
+        actualizarResumenMVP();
+
+        return;
+    }
+
+    historialMVPs.forEach((mvp,index)=>{
+
+        const inicial =
+            mvp.jugador.charAt(0).toUpperCase();
+
+        const imagen = mvp.imagen
+            ? `
+                <img
+                    src="${mvp.imagen}"
+                    alt="MVP ${mvp.jugador}"
+                    onerror="this.style.display='none'"
+                >
+              `
+            : inicial;
+
+        const tarjeta = document.createElement("div");
+
+        tarjeta.className = "mvp-historial-card";
+
+        tarjeta.onclick = function(){
+
+            mostrarInfoMVP(mvp);
+
+        };
+
+        tarjeta.innerHTML = `
+
+            <div class="mvp-historial-avatar">
+                ${imagen}
+            </div>
+
+            <div class="mvp-historial-info">
+
+                <div class="mvp-historial-top">
+
+                    <span class="mvp-corona">👑</span>
+
+                    <h3>
+                        ${mvp.jugador}
+                    </h3>
+
+                </div>
+
+                <p>
+                    ${mvp.fecha} · ${mvp.partido}
+                </p>
+
+                <div class="mvp-historial-stats">
+
+                    <span class="mvp-chip">
+                        ⚽ ${mvp.goles} goles
+                    </span>
+
+                    <span class="mvp-chip">
+                        🅰️ ${mvp.asistencias} asistencias
+                    </span>
+
+                </div>
+
+            </div>
+
+            <div class="mvp-historial-year">
+                ${mvp.temporada}
+            </div>
+
+        `;
+
+        contenedor.appendChild(tarjeta);
+
+    });
+
+    actualizarResumenMVP();
+
+}
+
+function actualizarResumenMVP(){
+
+    const total =
+        document.getElementById("totalMVPs");
+
+    const lider =
+        document.getElementById("liderMVP");
+
+    const ultimo =
+        document.getElementById("ultimoMVP");
+
+    if(!total || !lider || !ultimo) return;
+
+    total.innerText = historialMVPs.length;
+
+    if(historialMVPs.length === 0){
+
+        lider.innerText = "—";
+        ultimo.innerText = "—";
+        return;
+
+    }
+
+    const conteo = {};
+
+    historialMVPs.forEach(mvp=>{
+
+        conteo[mvp.jugador] =
+            (conteo[mvp.jugador] || 0) + 1;
+
+    });
+
+    const jugadorLider =
+        Object.keys(conteo).sort(
+            (a,b)=>conteo[b]-conteo[a]
+        )[0];
+
+    lider.innerText =
+        jugadorLider + " (" + conteo[jugadorLider] + ")";
+
+    ultimo.innerText =
+        historialMVPs[0].jugador;
+
+}
+
+function mostrarInfoMVP(mvp){
+
+    document.getElementById(
+        "modalNumero"
+    ).innerText = "🏆";
+
+    document.getElementById(
+        "modalTitulo"
+    ).innerText = mvp.jugador;
+
+    document.getElementById(
+        "modalTexto"
+    ).innerText =
+        "MVP " + mvp.temporada +
+        " · " + mvp.fecha +
+        " · " + mvp.goles +
+        " goles · " + mvp.asistencias +
+        " asistencias · " + mvp.partido;
+
+    document.getElementById(
+        "modal"
+    ).classList.add("activo");
+
+}
+
 /* =====================================================
    NAVEGACIÓN
 ===================================================== */
@@ -2573,6 +3005,13 @@ document.addEventListener(
 
     }
 );
+
+/* =====================================================
+   INICIAR HISTORIAL MVP
+===================================================== */
+
+renderHistorialMVP();
+
 
 
 </script>
