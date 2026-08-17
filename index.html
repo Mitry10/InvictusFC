@@ -2603,7 +2603,7 @@ footer{
                 <div class="dato-partido">
 
                     <strong id="lugarProximo">
-                        POR CONFIRMAR
+                        Parque y Campo de Futbol Rapido
                     </strong>
 
                     <small>
@@ -2618,7 +2618,7 @@ footer{
             <div class="cuenta-regresiva">
 
                 <span id="contadorPartido">
-                    ⏳ FECHA POR CONFIRMAR
+                    ⏳ POR CONFIRMAR
                 </span>
 
                 <small>
@@ -3550,134 +3550,83 @@ footer{
 </div>
 
 
+
 <script>
+
+/* =====================================================
+   ⚙️ CONFIGURACIÓN MANUAL DE INVICTUS FC
+
+   TODO LO QUE QUIERAS CAMBIAR MANUALMENTE
+   ESTÁ AQUÍ.
+
+   IMPORTANTE:
+   - Las estadísticas NO se calculan con los partidos.
+   - Los goles NO se suman automáticamente.
+   - El rendimiento NO cambia automáticamente.
+   - El próximo partido se cambia SOLO aquí.
+===================================================== */
 
 
 /* =====================================================
-   🔥🔥🔥 CONFIGURACIÓN DEL PRÓXIMO PARTIDO 🔥🔥🔥
+   📊 ESTADÍSTICAS MANUALES
+===================================================== */
 
-   ESTA ES LA PARTE MÁS IMPORTANTE.
+const ESTADISTICAS = {
 
-   CUANDO YA SEPAS EL PRÓXIMO ENCUENTRO,
-   SOLO CAMBIA ESTOS DATOS.
+    partidos: 7,
 
+    victorias: 1,
+
+    goles: 13,
+
+    /* Porcentaje de rendimiento que TÚ quieras mostrar */
+    rendimiento: 75,
+
+    /* Porcentaje que quieres para la barra de Goles a favor */
+    porcentajeGoles: 20
+
+};
+
+
+/* =====================================================
+   🔥 PRÓXIMO PARTIDO
+=====================================================
+
+   CAMBIA SOLAMENTE ESTOS DATOS.
+
+   Si todavía no conoces la fecha/hora:
+   fecha: "POR CONFIRMAR"
+   hora: "POR CONFIRMAR"
+   fechaHora: null
+
+   Cuando ya la conozcas, cambia los 3:
+
+   fecha: "29/08/2026"
+   hora: "20:00"
+   fechaHora: "2026-08-29T20:00:00"
+
+   fechaHora sirve ÚNICAMENTE para el contador.
 ===================================================== */
 
 const proximoPartido = {
 
-    /*
-    =====================================================
-    🔵 1. NOMBRE DEL RIVAL
-    =====================================================
+    rival: "Rebeldes",
 
-    EJEMPLO:
+    imagenRival: "Rebeldes.png",
 
-    rival: "Rival FC",
+    fecha: "17/08/2026",
 
-    =====================================================
-    */
+    hora: "19:30",
 
-    rival: "POR CONFIRMAR",
+    lugar: "Parque y Campo de Futbol Rapido",
 
-
-    /*
-    =====================================================
-    🔵 2. ESCUDO DEL RIVAL
-    =====================================================
-
-    AQUÍ CAMBIAS LA IMAGEN DEL ESCUDO.
-
-    EJEMPLO:
-
-    imagenRival: "AtleticoFC.png",
-
-    IMPORTANTE:
-    La imagen debe estar en la misma carpeta
-    que tu archivo HTML.
-
-    =====================================================
-    */
-
-    imagenRival: "RivalFC.png",
-
-
-    /*
-    =====================================================
-    🔵 3. FECHA DEL PARTIDO
-    =====================================================
-
-    CUANDO NO SEPAS LA FECHA:
-
-    fecha: "POR CONFIRMAR"
-
-    CUANDO LA SEPAS:
-
-    fecha: "29/08/2026"
-
-    =====================================================
-    */
-
-    fecha: "POR CONFIRMAR",
-
-
-    /*
-    =====================================================
-    🔵 4. HORA
-    =====================================================
-
-    CUANDO NO LA SEPAS:
-
-    hora: "POR CONFIRMAR"
-
-    CUANDO LA SEPAS:
-
-    hora: "20:00"
-
-    =====================================================
-    */
-
-    hora: "POR CONFIRMAR",
-
-
-    /*
-    =====================================================
-    🔵 5. LUGAR
-    =====================================================
-    */
-
-    lugar: "POR CONFIRMAR",
-
-
-    /*
-    =====================================================
-    🔵 6. FECHA Y HORA DEL CONTADOR
-    =====================================================
-
-    COMO TODAVÍA NO SE SABE LA FECHA:
-
-    DEBE ESTAR EN null.
-
-    CUANDO LA SEPAS, CAMBIA POR EJEMPLO A:
-
-    fechaHora: "2026-08-29T20:00:00"
-
-    =====================================================
-    */
-
-    fechaHora: null
+    fechaHora: "2026-08-17T19:30:00"
 
 };
 
 
 /* =====================================================
    ⚽ GOLES DEL ÚLTIMO PARTIDO
-=====================================================
-
-   LOS DOS GOLES LOS HIZO JOSUE.
-
-   GOL 1 → 2'
-   GOL 2 → 10'
-
 ===================================================== */
 
 const golesUltimoPartido = [
@@ -3700,27 +3649,23 @@ const golesUltimoPartido = [
 
 
 /* =====================================================
-   HISTORIAL DE PARTIDOS
+   📜 HISTORIAL DE PARTIDOS
+
+   Los partidos que agregues aquí NO modificarán
+   las estadísticas de arriba.
 ===================================================== */
 
 const historialPartidos = [
 
     {
-
         fecha:"10/08/2026",
-
         rival:"Gallos FC",
-
         imagenRival:"GallosFC.png",
-
         invictus:2,
-
         rivalGoles:7,
-
         resultado:"Derrota",
 
         goles:[
-
             {
                 jugador:"JOSUE",
                 minuto:"2'"
@@ -3730,99 +3675,68 @@ const historialPartidos = [
                 jugador:"JOSUE",
                 minuto:"10'"
             }
-
         ]
-
     }
 
 ];
 
 
 /* =====================================================
-   HISTORIAL DE MVPs
+   🏆 HISTORIAL DE MVPs
 ===================================================== */
 
 const historialMVPs = [
 
     {
-
         jugador:"CHUYIN",
-
         temporada:"2026",
-
         fecha:"10/08/2026",
-
         partido:"Invictus FC 2 - 7 Gallos FC",
-
         goles:0,
-
         asistencias:0,
-
-        descripcion:
-        "MVP del partido más reciente.",
-
+        descripcion:"MVP del partido más reciente.",
         imagen:"MVPChuyin.png"
-
     }
 
 ];
 
 
 /* =====================================================
-   CARGAR PRÓXIMO PARTIDO
+   🔥 PRÓXIMO PARTIDO
 ===================================================== */
 
 function cargarProximoPartido(){
 
-    document.getElementById(
-        "nombreProximoRival"
-    ).innerText =
+    document.getElementById("nombreProximoRival").innerText =
         proximoPartido.rival.toUpperCase();
 
-
-    document.getElementById(
-        "imagenProximoRival"
-    ).src =
+    document.getElementById("imagenProximoRival").src =
         proximoPartido.imagenRival;
 
-
-    document.getElementById(
-        "proximoFecha"
-    ).innerText =
+    document.getElementById("proximoFecha").innerText =
         proximoPartido.fecha;
 
-
-    document.getElementById(
-        "horaProximo"
-    ).innerText =
+    document.getElementById("horaProximo").innerText =
         proximoPartido.hora;
 
-
-    document.getElementById(
-        "lugarProximo"
-    ).innerText =
+    document.getElementById("lugarProximo").innerText =
         proximoPartido.lugar;
 
 }
 
 
 /* =====================================================
-   CUENTA REGRESIVA
+   ⏳ CUENTA REGRESIVA
+
+   ESTA ES LA ÚNICA PARTE QUE SE ACTUALIZA SOLA:
+   solamente cuenta el tiempo del próximo partido.
+   NO modifica estadísticas.
 ===================================================== */
 
 function actualizarCuentaRegresiva(){
 
     const contador =
-        document.getElementById(
-            "contadorPartido"
-        );
-
-
-    /*
-    =====================================================
-    🔵 SI NO SE CONOCE LA FECHA
-    =====================================================
-    */
+        document.getElementById("contadorPartido");
 
     if(!proximoPartido.fechaHora){
 
@@ -3830,23 +3744,18 @@ function actualizarCuentaRegresiva(){
             "⏳ FECHA POR CONFIRMAR";
 
         return;
-
     }
-
 
     const ahora =
         new Date().getTime();
-
 
     const partido =
         new Date(
             proximoPartido.fechaHora
         ).getTime();
 
-
     const diferencia =
         partido - ahora;
-
 
     if(diferencia <= 0){
 
@@ -3854,9 +3763,7 @@ function actualizarCuentaRegresiva(){
             "⚽ ¡EL PARTIDO YA COMENZÓ!";
 
         return;
-
     }
-
 
     const dias =
         Math.floor(
@@ -3864,65 +3771,44 @@ function actualizarCuentaRegresiva(){
             (1000 * 60 * 60 * 24)
         );
 
-
     const horas =
         Math.floor(
             (
                 diferencia %
                 (1000 * 60 * 60 * 24)
-            )
-            /
+            ) /
             (1000 * 60 * 60)
         );
-
 
     const minutos =
         Math.floor(
             (
                 diferencia %
                 (1000 * 60 * 60)
-            )
-            /
+            ) /
             (1000 * 60)
         );
-
 
     const segundos =
         Math.floor(
             (
                 diferencia %
                 (1000 * 60)
-            )
-            /
+            ) /
             1000
         );
 
-
     contador.innerText =
-
         dias + "d  " +
-
         horas + "h  " +
-
         minutos + "m  " +
-
         segundos + "s";
 
 }
 
 
-cargarProximoPartido();
-
-actualizarCuentaRegresiva();
-
-setInterval(
-    actualizarCuentaRegresiva,
-    1000
-);
-
-
 /* =====================================================
-   RENDER GOLES
+   ⚽ GOLES DEL ÚLTIMO PARTIDO
 ===================================================== */
 
 function renderGolesUltimoPartido(){
@@ -3932,77 +3818,49 @@ function renderGolesUltimoPartido(){
             "golesUltimoPartido"
         );
 
-
     contenedor.innerHTML = "";
 
-
-    if(
-        golesUltimoPartido.length === 0
-    ){
+    if(golesUltimoPartido.length === 0){
 
         contenedor.innerHTML = `
-
             <div class="historial-vacio">
-
                 ⚽ No hay goles registrados todavía.
-
             </div>
-
         `;
 
         return;
-
     }
-
 
     golesUltimoPartido.forEach(
         gol => {
 
             const elemento =
-                document.createElement(
-                    "div"
-                );
-
+                document.createElement("div");
 
             elemento.className =
                 "gol-item";
 
-
             elemento.innerHTML = `
 
                 <div class="gol-minuto">
-
                     ${gol.minuto}
-
                 </div>
-
 
                 <div class="gol-icono">
-
                     ${gol.tipo}
-
                 </div>
-
 
                 <div class="gol-nombre">
-
                     ${gol.jugador}
-
                 </div>
 
-
                 <div class="gol-equipo">
-
                     ${gol.equipo}
-
                 </div>
 
             `;
 
-
-            contenedor.appendChild(
-                elemento
-            );
+            contenedor.appendChild(elemento);
 
         }
     );
@@ -4011,7 +3869,7 @@ function renderGolesUltimoPartido(){
 
 
 /* =====================================================
-   HISTORIAL DE PARTIDOS
+   📜 HISTORIAL DE PARTIDOS
 ===================================================== */
 
 function renderHistorialPartidos(){
@@ -4021,41 +3879,27 @@ function renderHistorialPartidos(){
             "historialPartidos"
         );
 
-
     contenedor.innerHTML = "";
 
-
-    if(
-        historialPartidos.length === 0
-    ){
+    if(historialPartidos.length === 0){
 
         contenedor.innerHTML = `
-
             <div class="historial-vacio">
-
                 📜 Todavía no hay partidos registrados.
-
             </div>
-
         `;
 
         return;
-
     }
-
 
     historialPartidos.forEach(
         partido => {
 
             const tarjeta =
-                document.createElement(
-                    "div"
-                );
-
+                document.createElement("div");
 
             tarjeta.className =
                 "partido-historial";
-
 
             tarjeta.onclick =
                 function(){
@@ -4067,33 +3911,27 @@ function renderHistorialPartidos(){
                 };
 
 
-            let claseResultado =
-                "empate";
-
+            let claseResultado = "empate";
 
             if(
-                partido.invictus >
-                partido.rivalGoles
+                Number(partido.invictus) >
+                Number(partido.rivalGoles)
             ){
 
-                claseResultado =
-                    "victoria";
+                claseResultado = "victoria";
 
             }
-
             else if(
-                partido.invictus <
-                partido.rivalGoles
+                Number(partido.invictus) <
+                Number(partido.rivalGoles)
             ){
 
-                claseResultado =
-                    "derrota";
+                claseResultado = "derrota";
 
             }
 
 
             let golesHTML = "";
-
 
             if(
                 partido.goles &&
@@ -4122,15 +3960,12 @@ function renderHistorialPartidos(){
                 );
 
             }
-
             else{
 
                 golesHTML = `
 
                     <div class="detalle-gol">
-
                         No hay goles registrados.
-
                     </div>
 
                 `;
@@ -4143,19 +3978,14 @@ function renderHistorialPartidos(){
                 <div class="partido-top">
 
                     <div class="partido-fecha">
-
                         ${partido.fecha}
-
                     </div>
-
 
                     <div class="
                         resultado-badge
                         ${claseResultado}
                     ">
-
                         ${partido.resultado}
-
                     </div>
 
                 </div>
@@ -4163,11 +3993,8 @@ function renderHistorialPartidos(){
 
                 <div class="partido-centro">
 
-
                     <div class="partido-equipo">
-
                         INVICTUS FC
-
                     </div>
 
 
@@ -4189,11 +4016,8 @@ function renderHistorialPartidos(){
 
 
                     <div class="partido-equipo">
-
                         ${partido.rival}
-
                     </div>
-
 
                 </div>
 
@@ -4201,11 +4025,8 @@ function renderHistorialPartidos(){
                 <div class="partido-detalles">
 
                     <div class="detalle-titulo">
-
                         ⚽ Goles de Invictus FC
-
                     </div>
-
 
                     ${golesHTML}
 
@@ -4213,10 +4034,7 @@ function renderHistorialPartidos(){
 
             `;
 
-
-            contenedor.appendChild(
-                tarjeta
-            );
+            contenedor.appendChild(tarjeta);
 
         }
     );
@@ -4225,390 +4043,88 @@ function renderHistorialPartidos(){
 
 
 /* =====================================================
-   ESTADÍSTICAS
+   📊 ESTADÍSTICAS MANUALES
+
+   NO HACE NINGÚN CÁLCULO.
+   SOLAMENTE MUESTRA LOS NÚMEROS QUE PUSISTE ARRIBA.
 ===================================================== */
 
-function actualizarEstadisticas(){
-
-    const partidos =
-        historialPartidos.length;
-
-
-    let victorias = 0;
-
-    let empates = 0;
-
-    let derrotas = 0;
-
-    let golesFavor = 0;
-
-    let golesContra = 0;
-
-
-    historialPartidos.forEach(
-        partido => {
-
-            golesFavor +=
-                Number(
-                    partido.invictus
-                );
-
-
-            golesContra +=
-                Number(
-                    partido.rivalGoles
-                );
-
-
-            if(
-                partido.invictus >
-                partido.rivalGoles
-            ){
-
-                victorias++;
-
-            }
-
-            else if(
-                partido.invictus ===
-                partido.rivalGoles
-            ){
-
-                empates++;
-
-            }
-
-            else{
-
-                derrotas++;
-
-            }
-
-        }
-    );
-
-
-    const puntos =
-        victorias * 3 +
-        empates;
-
+function cargarEstadisticasManuales(){
 
     document.getElementById(
         "statPartidos"
     ).innerText =
-        partidos;
+        ESTADISTICAS.partidos;
 
 
     document.getElementById(
         "statVictorias"
     ).innerText =
-        victorias;
+        ESTADISTICAS.victorias;
 
 
     document.getElementById(
         "statGoles"
     ).innerText =
-        golesFavor;
+        ESTADISTICAS.goles;
 
 
     document.getElementById(
         "barraGolesTexto"
     ).innerText =
-        golesFavor;
-
-
-    let rendimiento = 0;
-
-
-    if(partidos > 0){
-
-        rendimiento =
-            Math.round(
-                (
-                    puntos /
-                    (partidos * 3)
-                ) * 100
-            );
-
-    }
+        ESTADISTICAS.goles;
 
 
     document.getElementById(
         "rendimientoTexto"
     ).innerText =
-        rendimiento + "%";
+        ESTADISTICAS.rendimiento + "%";
 
 
     document.getElementById(
         "barraRendimiento"
     ).style.width =
-        rendimiento + "%";
-
-
-    const maxGoles =
-        Math.max(
-            golesFavor,
-            golesContra,
-            1
-        );
-
-
-    const porcentajeGoles =
-        Math.min(
-            Math.round(
-                (
-                    golesFavor /
-                    maxGoles
-                ) * 100
-            ),
-            100
-        );
+        ESTADISTICAS.rendimiento + "%";
 
 
     document.getElementById(
         "barraGoles"
     ).style.width =
-        porcentajeGoles + "%";
+        ESTADISTICAS.porcentajeGoles + "%";
 
 
     document.getElementById(
         "tablaPJ"
     ).innerText =
-        partidos;
+        ESTADISTICAS.partidos;
 
 
     document.getElementById(
         "tablaG"
     ).innerText =
-        victorias;
-
-
-    document.getElementById(
-        "tablaDG"
-    ).innerText =
-        golesFavor -
-        golesContra;
-
-
-    document.getElementById(
-        "tablaPTS"
-    ).innerText =
-        puntos;
+        ESTADISTICAS.victorias;
 
 }
 
 
 /* =====================================================
-   HISTORIAL MVP
+   🏆 HISTORIAL MVP
 ===================================================== */
-
-function renderHistorialMVP(){
-
-    const contenedor =
-        document.getElementById(
-            "historialMVP"
-        );
-
-
-    if(!contenedor) return;
-
-
-    contenedor.innerHTML = "";
-
-
-    if(
-        historialMVPs.length === 0
-    ){
-
-        contenedor.innerHTML = `
-
-            <div class="
-                historial-vacio
-            ">
-
-                🏆 Todavía no hay MVPs registrados.
-
-            </div>
-
-        `;
-
-
-        actualizarResumenMVP();
-
-        return;
-
-    }
-
-
-    historialMVPs.forEach(
-        mvp => {
-
-            const inicial =
-                mvp.jugador
-                .charAt(0)
-                .toUpperCase();
-
-
-            const imagen =
-                mvp.imagen
-                ?
-                `
-
-                <img
-                    src="${mvp.imagen}"
-                    alt="MVP ${mvp.jugador}"
-                    onerror="
-                        this.style.display='none'
-                    "
-                >
-
-                `
-                :
-                inicial;
-
-
-            const tarjeta =
-                document.createElement(
-                    "div"
-                );
-
-
-            tarjeta.className =
-                "mvp-historial-card";
-
-
-            tarjeta.onclick =
-                function(){
-
-                    mostrarInfoMVP(
-                        mvp
-                    );
-
-                };
-
-
-            tarjeta.innerHTML = `
-
-                <div
-                    class="
-                    mvp-historial-avatar
-                    "
-                >
-
-                    ${imagen}
-
-                </div>
-
-
-                <div
-                    class="
-                    mvp-historial-info
-                    "
-                >
-
-                    <h3>
-
-                        👑
-                        ${mvp.jugador}
-
-                    </h3>
-
-
-                    <p>
-
-                        ${mvp.fecha}
-                        ·
-                        ${mvp.partido}
-
-                    </p>
-
-
-                    <div
-                        class="
-                        mvp-historial-stats
-                        "
-                    >
-
-                        <span
-                            class="mvp-chip"
-                        >
-
-                            ⚽
-                            ${mvp.goles}
-                            goles
-
-                        </span>
-
-
-                        <span
-                            class="mvp-chip"
-                        >
-
-                            🅰️
-                            ${mvp.asistencias}
-                            asistencias
-
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <div
-                    class="
-                    mvp-historial-year
-                    "
-                >
-
-                    ${mvp.temporada}
-
-                </div>
-
-            `;
-
-
-            contenedor.appendChild(
-                tarjeta
-            );
-
-        }
-    );
-
-
-    actualizarResumenMVP();
-
-}
-
 
 function actualizarResumenMVP(){
 
     const total =
-        document.getElementById(
-            "totalMVPs"
-        );
-
+        document.getElementById("totalMVPs");
 
     const lider =
-        document.getElementById(
-            "liderMVP"
-        );
-
+        document.getElementById("liderMVP");
 
     const ultimo =
-        document.getElementById(
-            "ultimoMVP"
-        );
+        document.getElementById("ultimoMVP");
 
 
-    if(
-        !total ||
-        !lider ||
-        !ultimo
-    ){
-
+    if(!total || !lider || !ultimo){
         return;
-
     }
 
 
@@ -4616,49 +4132,45 @@ function actualizarResumenMVP(){
         historialMVPs.length;
 
 
-    if(
-        historialMVPs.length === 0
-    ){
+    if(historialMVPs.length === 0){
 
-        lider.innerText =
-            "—";
-
-        ultimo.innerText =
-            "—";
+        lider.innerText = "Ninguno";
+        ultimo.innerText = "Ninguno";
 
         return;
-
     }
 
 
     const conteo = {};
 
-
     historialMVPs.forEach(
         mvp => {
 
             conteo[mvp.jugador] =
-                (
-                    conteo[mvp.jugador]
-                    ||
-                    0
-                ) + 1;
+                (conteo[mvp.jugador] || 0) + 1;
 
         }
     );
 
 
-    const jugadorLider =
-        Object.keys(
-            conteo
-        ).sort(
-            (
-                a,
-                b
-            ) =>
-                conteo[b] -
-                conteo[a]
-        )[0];
+    let jugadorLider =
+        historialMVPs[0].jugador;
+
+
+    Object.keys(conteo).forEach(
+        jugador => {
+
+            if(
+                conteo[jugador] >
+                conteo[jugadorLider]
+            ){
+
+                jugadorLider = jugador;
+
+            }
+
+        }
+    );
 
 
     lider.innerText =
@@ -4706,15 +4218,152 @@ function mostrarInfoMVP(mvp){
 
     document.getElementById(
         "modal"
-    ).classList.add(
-        "activo"
+    ).classList.add("activo");
+
+}
+
+
+function renderHistorialMVP(){
+
+    const contenedor =
+        document.getElementById(
+            "historialMVP"
+        );
+
+    if(!contenedor) return;
+
+    contenedor.innerHTML = "";
+
+
+    if(historialMVPs.length === 0){
+
+        contenedor.innerHTML = `
+
+            <div class="historial-vacio">
+                🏆 Todavía no hay MVPs registrados.
+            </div>
+
+        `;
+
+        actualizarResumenMVP();
+
+        return;
+    }
+
+
+    historialMVPs.forEach(
+        mvp => {
+
+            const inicial =
+                mvp.jugador
+                .charAt(0)
+                .toUpperCase();
+
+
+            const imagen =
+                mvp.imagen
+                ?
+                `
+                    <img
+                        src="${mvp.imagen}"
+                        alt="MVP ${mvp.jugador}"
+                        onerror="
+                            this.style.display='none'
+                        "
+                    >
+                `
+                :
+                inicial;
+
+
+            const tarjeta =
+                document.createElement("div");
+
+
+            tarjeta.className =
+                "mvp-historial-card";
+
+
+            tarjeta.onclick =
+                function(){
+
+                    mostrarInfoMVP(mvp);
+
+                };
+
+
+            tarjeta.innerHTML = `
+
+                <div
+                    class="
+                    mvp-historial-avatar
+                    "
+                >
+                    ${imagen}
+                </div>
+
+
+                <div
+                    class="
+                    mvp-historial-info
+                    "
+                >
+
+                    <h3>
+                        👑
+                        ${mvp.jugador}
+                    </h3>
+
+                    <p>
+                        ${mvp.descripcion}
+                    </p>
+
+
+                    <div
+                        class="
+                        mvp-historial-stats
+                        "
+                    >
+
+                        <span class="mvp-chip">
+                            ⚽ ${mvp.goles} goles
+                        </span>
+
+                        <span class="mvp-chip">
+                            🎯 ${mvp.asistencias} asistencias
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="
+                    mvp-historial-year
+                    "
+                >
+                    ${mvp.temporada}
+                </div>
+
+            `;
+
+
+            contenedor.appendChild(
+                tarjeta
+            );
+
+        }
     );
+
+
+    actualizarResumenMVP();
 
 }
 
 
 /* =====================================================
-   NAVEGACIÓN
+   🧭 NAVEGACIÓN
 ===================================================== */
 
 function irA(id){
@@ -4722,13 +4371,10 @@ function irA(id){
     const elemento =
         document.getElementById(id);
 
-
     if(elemento){
 
         elemento.scrollIntoView({
-
             behavior:"smooth"
-
         });
 
     }
@@ -4737,7 +4383,7 @@ function irA(id){
 
 
 /* =====================================================
-   APOYO
+   🙌 APOYO
 ===================================================== */
 
 let apoyos = 0;
@@ -4762,7 +4408,7 @@ function darApoyo(){
 
 
 /* =====================================================
-   NOTIFICACIÓN
+   🔔 NOTIFICACIÓN
 ===================================================== */
 
 function notificar(mensaje){
@@ -4797,7 +4443,7 @@ function notificar(mensaje){
 
 
 /* =====================================================
-   INFORMACIÓN DE ESTADÍSTICAS
+   📊 INFORMACIÓN DE ESTADÍSTICAS
 ===================================================== */
 
 function mostrarInfo(
@@ -4820,7 +4466,6 @@ function mostrarInfo(
     document.getElementById(
         "modalTexto"
     ).innerText =
-
         "Información registrada de Invictus FC.";
 
 
@@ -4834,7 +4479,7 @@ function mostrarInfo(
 
 
 /* =====================================================
-   JUGADOR
+   👤 JUGADOR
 ===================================================== */
 
 function abrirJugador(
@@ -4874,7 +4519,7 @@ function abrirJugador(
 
 
 /* =====================================================
-   CERRAR MODAL
+   ❌ CERRAR MODAL
 ===================================================== */
 
 function cerrarModal(){
@@ -4889,7 +4534,7 @@ function cerrarModal(){
 
 
 /* =====================================================
-   ESCAPE
+   ⌨️ ESCAPE
 ===================================================== */
 
 document.addEventListener(
@@ -4910,8 +4555,19 @@ document.addEventListener(
 
 
 /* =====================================================
-   INICIAR TODO
+   🚀 INICIAR PÁGINA
+
+   Aquí NO se calculan estadísticas.
 ===================================================== */
+
+cargarProximoPartido();
+
+actualizarCuentaRegresiva();
+
+setInterval(
+    actualizarCuentaRegresiva,
+    1000
+);
 
 renderGolesUltimoPartido();
 
@@ -4919,7 +4575,7 @@ renderHistorialPartidos();
 
 renderHistorialMVP();
 
-actualizarEstadisticas();
+cargarEstadisticasManuales();
 
 
 </script>
@@ -4927,4 +4583,5 @@ actualizarEstadisticas();
 
 </body>
 
+</html>
 </html>
